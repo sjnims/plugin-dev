@@ -298,7 +298,7 @@ EOF
 
 **Test scenarios:**
 
-**Scenario 1: Command + Hook Integration**
+#### Scenario 1: Command + Hook Integration
 
 ```bash
 # Setup: Command that triggers a hook
@@ -311,7 +311,7 @@ EOF
 # Verify: Hook executes and validates before command completes
 ```
 
-**Scenario 2: Command Sequence**
+#### Scenario 2: Command Sequence
 
 ```bash
 # Setup: Multi-command workflow
@@ -325,7 +325,7 @@ EOF
 # Verify: State file cleaned up
 ```
 
-**Scenario 3: Command + MCP Integration**
+#### Scenario 3: Command + MCP Integration
 
 ```bash
 # Setup: Command uses MCP tools
@@ -643,7 +643,7 @@ Before releasing a command:
 
 ### Common Issues and Solutions
 
-**Issue: Command not appearing in /help**
+#### Issue: Command not appearing in /help
 
 ```bash
 # Check file location
@@ -659,7 +659,7 @@ head -n 20 .claude/commands/my-command.md
 claude --debug
 ```
 
-**Issue: Arguments not substituting**
+#### Issue: Arguments not substituting
 
 ```bash
 # Verify syntax
@@ -670,7 +670,7 @@ grep '\$ARGUMENTS' .claude/commands/my-command.md
 echo "Test: \$1 and \$2" > .claude/commands/test-args.md
 ```
 
-**Issue: Bash commands not executing**
+#### Issue: Bash commands not executing
 
 ```bash
 # Check allowed-tools
@@ -684,7 +684,7 @@ date
 echo "test"
 ```
 
-**Issue: File references not working**
+#### Issue: File references not working
 
 ```bash
 # Check @ syntax

@@ -533,7 +533,7 @@ All matching hooks run **in parallel**:
 
 Create hooks that activate conditionally by checking for a flag file or configuration:
 
-**Pattern: Flag file activation**
+### Pattern: Flag file activation
 
 ```bash
 #!/bin/bash
@@ -550,7 +550,7 @@ input=$(cat)
 # ... validation logic ...
 ```
 
-**Pattern: Configuration-based activation**
+### Pattern: Configuration-based activation
 
 ```bash
 #!/bin/bash

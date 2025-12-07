@@ -192,7 +192,6 @@ Use this workflow for structured, high-quality plugin development from concept t
 
 **Use when:** Creating new skills for plugins or improving existing skill quality.
 
-
 ## Installation
 
 Install from claude-code-marketplace:
@@ -222,7 +221,6 @@ cc --plugin-dir /path/to/plugin-dev
 3. **Implement hooks (if needed):**
    - Ask: "Create a PreToolUse hook that validates file writes"
    - The hook-development skill gives working examples and utilities
-
 
 ## Development Workflow
 
@@ -391,7 +389,7 @@ This plugin is part of the claude-code-marketplace. To contribute improvements:
 
 ## Author
 
-Daisy Hollman (daisy@anthropic.com)
+Daisy Hollman (<daisy@anthropic.com>)
 
 ## License
 

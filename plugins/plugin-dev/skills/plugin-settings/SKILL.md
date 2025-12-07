@@ -61,7 +61,7 @@ Contact @team-lead with questions.
 
 ### From Hooks (Bash Scripts)
 
-**Pattern: Check existence and parse frontmatter**
+#### Pattern: Check existence and parse frontmatter
 
 ```bash
 #!/bin/bash

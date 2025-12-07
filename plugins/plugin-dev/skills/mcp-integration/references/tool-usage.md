@@ -314,7 +314,8 @@ Steps:
 
 ### Batching Requests
 
-**Good: Single query with filters**
+#### Good: Single query with filters
+
 ```markdown
 Steps:
 1. Call mcp__plugin_api_server__search with filters:
@@ -324,7 +325,8 @@ Steps:
 2. Process all results
 ```
 
-**Avoid: Many individual queries**
+#### Avoid: Many individual queries
+
 ```markdown
 Steps:
 1. For each item ID:

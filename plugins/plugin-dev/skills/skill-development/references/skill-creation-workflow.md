@@ -182,7 +182,7 @@ After testing the skill, users may request improvements. Often this happens righ
 - Pointers to references/examples/scripts
 - Most common use cases
 
-**Keep under 3,000 words, ideally 1,500-2,000 words**
+Keep under 3,000 words, ideally 1,500-2,000 words.
 
 ### What Goes in references/
 
@@ -194,7 +194,7 @@ After testing the skill, users may request improvements. Often this happens righ
 - Edge cases and troubleshooting
 - Extensive examples and walkthroughs
 
-**Each reference file can be large (2,000-5,000+ words)**
+Each reference file can be large (2,000-5,000+ words).
 
 ### What Goes in examples/
 
@@ -205,7 +205,7 @@ After testing the skill, users may request improvements. Often this happens righ
 - Template files
 - Real-world usage examples
 
-**Users can copy and adapt these directly**
+Users can copy and adapt these directly.
 
 ### What Goes in scripts/
 
@@ -216,7 +216,7 @@ After testing the skill, users may request improvements. Often this happens righ
 - Parsing utilities
 - Automation scripts
 
-**Should be executable and documented**
+Should be executable and documented.
 
 ## Writing Style Guide
 
