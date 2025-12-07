@@ -8,7 +8,7 @@ version: 0.1.0
 
 ## Overview
 
-Claude Code plugins follow a standardized directory structure with automatic component discovery. Understanding this structure enables creating well-organized, maintainable plugins that integrate seamlessly with Claude Code.
+Claude Code plugins follow a standardized directory structure with automatic component discovery. Master this structure to create well-organized, maintainable plugins that integrate seamlessly with Claude Code.
 
 **Key concepts:**
 

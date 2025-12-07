@@ -8,7 +8,7 @@ version: 0.1.0
 
 ## Overview
 
-Slash commands are frequently-used prompts defined as Markdown files that Claude executes during interactive sessions. Understanding command structure, frontmatter options, and dynamic features enables creating powerful, reusable workflows.
+Slash commands are frequently-used prompts defined as Markdown files that Claude executes during interactive sessions. Master command structure, frontmatter options, and dynamic features to create powerful, reusable workflows.
 
 **Key concepts:**
 

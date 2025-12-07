@@ -8,7 +8,7 @@ version: 0.1.0
 
 ## Overview
 
-Agents are autonomous subprocesses that handle complex, multi-step tasks independently. Understanding agent structure, triggering conditions, and system prompt design enables creating powerful autonomous capabilities.
+Agents are autonomous subprocesses that handle complex, multi-step tasks independently. Master agent structure, triggering conditions, and system prompt design to create powerful autonomous capabilities.
 
 **Key concepts:**
 - Agents are FOR autonomous work, commands are FOR user-initiated actions
