@@ -293,7 +293,7 @@ Provide template in plugin README:
 ```markdown
 ## Configuration
 
-Create `.claude/my-plugin.local.md` in your project:
+Create `.claude/my-plugin.local.md` in the project:
 
 \`\`\`markdown
 ---
@@ -304,7 +304,7 @@ max_retries: 3
 
 # Plugin Configuration
 
-Your settings are active.
+Settings are active.
 \`\`\`
 
 After creating or editing, restart Claude Code for changes to take effect.
@@ -368,7 +368,7 @@ fi
 
 **Important:** Settings changes require Claude Code restart.
 
-Document in your README:
+Document in the plugin README:
 
 ```markdown
 ## Changing Settings
