@@ -16,6 +16,8 @@ Agents are autonomous subprocesses that handle complex, multi-step tasks indepen
 - System prompt defines agent behavior
 - Model and color customization
 
+> **⚠️ Field Name Difference:** Agents use `tools` to restrict tool access. Skills use `allowed-tools` for the same purpose. Don't confuse these when switching between component types.
+
 ## When to Use Agents vs Commands vs Skills
 
 | Component | Best For | Triggering | Example Use Case |
@@ -198,6 +200,8 @@ tools: ["Read", "Write", "Grep", "Bash"]
 - Code generation: `["Read", "Write", "Grep"]`
 - Testing: `["Read", "Bash", "Grep"]`
 - Full access: Omit field or use `["*"]`
+
+> **Important:** Agents use `tools` while Skills use `allowed-tools`. The field names differ between component types. For skill tool restrictions, see the `skill-development` skill.
 
 ## System Prompt Design
 
