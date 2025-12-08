@@ -17,6 +17,35 @@ Agents are autonomous subprocesses that handle complex, multi-step tasks indepen
 - System prompt defines agent behavior
 - Model and color customization
 
+## When to Use Agents vs Commands vs Skills
+
+| Component | Best For | Triggering | Example Use Case |
+|-----------|----------|------------|------------------|
+| **Agents** | Autonomous multi-step tasks | Proactive or description-matched | Code review after implementation |
+| **Commands** | User-initiated actions | Explicit `/command` invocation | `/deploy production` |
+| **Skills** | Knowledge and guidance | Model-invoked based on context | Domain expertise for PDF processing |
+
+### Choose Agents When
+
+- Task requires autonomous, multi-step execution
+- Proactive triggering after certain events is desired
+- Specialized subprocess with focused tools needed
+- Work should happen in the background or as a subagent
+
+### Choose Commands When
+
+- User should explicitly trigger the action
+- Task has clear start/end with specific inputs
+- Action should not happen automatically
+- Workflow requires user confirmation at each step
+
+### Choose Skills When
+
+- Providing knowledge or procedural guidance
+- Extending Claude's domain expertise
+- No autonomous execution needed
+- Information should be available contextually on-demand
+
 ## Agent File Structure
 
 ### Complete Format
