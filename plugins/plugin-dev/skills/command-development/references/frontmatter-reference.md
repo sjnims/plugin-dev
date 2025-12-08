@@ -135,11 +135,11 @@ allowed-tools: "*"
 **Values:**
 
 - Shorthand: `sonnet`, `opus`, `haiku`
-- Full model ID: `claude-sonnet-4-5-20250929`, `claude-haiku-4-5-20251001`, etc.
+- Full model ID: Format is `claude-<family>-<version>-<date>` (e.g., `claude-sonnet-4-5-20250929`)
 
 Both formats are accepted. Shorthand names use the current default version of each model family.
 
-> **Note:** Model ID examples above reflect December 2025 releases. Anthropic releases new model versions periodically. For current model IDs, consult [Claude Models Overview](https://docs.anthropic.com/en/docs/about-claude/models).
+> **Note:** Anthropic releases new model versions periodically. For current model IDs, consult [Claude Models Overview](https://docs.anthropic.com/en/docs/about-claude/models). Prefer shorthand names unless you need a specific version.
 
 **Purpose:** Specify which Claude model executes the command
 
@@ -447,7 +447,7 @@ allowed-tools: Bash  # ❌ Missing command filter
 model: gpt4  # ❌ Not a valid Claude model
 ```
 
-**Fix:** Use shorthand (`sonnet`, `opus`, `haiku`) or full model ID (e.g., `claude-sonnet-4-5-20250929`)
+**Fix:** Use shorthand (`sonnet`, `opus`, `haiku`) or full model ID (see [Claude Models Overview](https://docs.anthropic.com/en/docs/about-claude/models))
 
 ### Validation Checklist
 
