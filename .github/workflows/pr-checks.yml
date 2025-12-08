@@ -11,6 +11,15 @@ concurrency:
   group: pr-checks-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
+# Permissions required by reusable workflows
+# Union of: component-validation, version-check, claude-pr-review
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  id-token: write
+  actions: read
+
 jobs:
   # Detect what files changed to determine which checks to run
   changes:
