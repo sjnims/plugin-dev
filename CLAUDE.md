@@ -22,6 +22,15 @@ plugin-dev/                      # Marketplace root
 └── .github/workflows/           # CI/CD workflows
 ```
 
+## Architecture Note
+
+This repo has two levels of `.claude-plugin/`:
+
+- **Root level**: `/.claude-plugin/marketplace.json` - Marketplace manifest listing available plugins
+- **Plugin level**: `/plugins/plugin-dev/.claude-plugin/plugin.json` - Individual plugin manifest
+
+When testing locally, point to the plugin directory, not the root.
+
 ## Key Conventions
 
 ### Skill Structure
@@ -154,3 +163,7 @@ Key workflows in `.github/workflows/`:
 - `component-validation.yml` - Validates plugin components
 - `links.yml` - Checks for broken links (uses lychee)
 - `claude-pr-review.yml` - AI-powered PR review
+- `claude.yml` - Claude Code automation
+- `ci-failure-analysis.yml` - Analyzes CI failures
+- `validate-workflows.yml` - Validates GitHub Actions syntax
+- `version-check.yml` - Validates version consistency
