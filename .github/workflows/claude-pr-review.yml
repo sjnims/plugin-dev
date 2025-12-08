@@ -1,12 +1,15 @@
 name: Claude Automated PR Review
 
 on:
-  # Reusable workflow - called by pr-checks.yml orchestrator
-  workflow_call:
+  # Using pull_request (not pull_request_target) for security:
+  # - pull_request_target exposes secrets to fork PRs, creating exfiltration risk
+  # - For fork PRs needing review, maintainers can manually @claude via claude.yml
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
 
 # Cancel any in-progress review for the same PR when new commits are pushed
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
@@ -17,7 +20,6 @@ jobs:
       github.actor != 'claude[bot]' &&
       github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     permissions:
       contents: read
       pull-requests: write
@@ -35,12 +37,8 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Cache npm packages
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
-        with:
-          path: ~/.npm
-          key: npm-markdownlint-${{ runner.os }}
-          restore-keys: npm-markdownlint-
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
 
       - name: Review PR with Claude
         uses: anthropics/claude-code-action@6337623ebba10cf8c8214b507993f8062fd4ccfb # v1.0.22
@@ -58,7 +56,7 @@ jobs:
 
             ## Instructions
             1. Get the PR diff to understand what changed
-            2. If any `.md` files were changed, run `npx markdownlint-cli --config .markdownlint.json <files>` to check for style issues
+            2. If any `.md` files were changed, run `markdownlint --config .markdownlint.json <files>` to check for style issues
             3. Review the changes against the criteria below
             4. Post a summary comment with your findings
 
@@ -70,8 +68,8 @@ jobs:
             - **Agents** (`agents/*.md`): Verify <example> blocks for triggering, appropriate tool restrictions.
             - **Hooks** (`hooks/hooks.json`): Validate event types and matcher patterns.
 
-            ### Markdown Quality
-            Run `npx markdownlint-cli --config .markdownlint.json` on changed `.md` files. Key rules enforced:
+            ### Markdown Quality (run markdownlint)
+            Run `markdownlint --config .markdownlint.json` on changed `.md` files. Key rules enforced:
             - ATX-style headers (`#` not underlines)
             - Dash-style lists (`-` not `*` or `+`)
             - 2-space indentation for nested lists
@@ -92,4 +90,4 @@ jobs:
             Be constructive and helpful. Focus on significant issues, not nitpicks.
             If the PR looks good, say so briefly - don't invent problems.
           claude_args: |
-            --allowedTools "Bash(gh pr:*),Bash(npx markdownlint-cli:*),Read,Glob,Grep,mcp__github_inline_comment__create_inline_comment"
+            --allowedTools "Bash(gh pr:*),Bash(markdownlint:*),Read,Glob,Grep,mcp__github_inline_comment__create_inline_comment"

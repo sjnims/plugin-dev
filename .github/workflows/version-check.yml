@@ -1,10 +1,12 @@
 name: Version Consistency Check
 
 on:
-  # Reusable workflow - called by pr-checks.yml orchestrator
-  workflow_call:
-  # Manual trigger for pre-release checks
-  workflow_dispatch:
+  pull_request:
+    paths:
+      - "plugins/plugin-dev/.claude-plugin/plugin.json"
+      - ".claude-plugin/marketplace.json"
+      - "CLAUDE.md"
+  workflow_dispatch: # Manual trigger for pre-release checks
 
 # Cancel any in-progress check for the same PR when new commits are pushed
 concurrency:
@@ -18,7 +20,6 @@ jobs:
       github.actor != 'dependabot[bot]' &&
       github.actor != 'claude[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     permissions:
       contents: read
       id-token: write

@@ -169,24 +169,16 @@ Use these agents proactively after creating components:
 
 ## CI/CD
 
-### PR Checks Orchestrator
+### PR Workflows
 
-The `pr-checks.yml` workflow orchestrates all PR validation:
-
-- Detects changed files and runs only relevant checks
-- Provides single `All Checks Pass` status for branch protection
-- Runs checks in parallel for efficiency
-
-### Reusable Workflows (called by orchestrator)
-
-| Workflow | Trigger Condition | Purpose |
-|----------|-------------------|---------|
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
 | `markdownlint.yml` | `**.md` changed | Lint markdown files |
 | `links.yml` | `**.md` changed | Check for broken links |
-| `component-validation.yml` | `plugins/plugin-dev/**` changed | Validate plugin components |
+| `component-validation.yml` | Plugin components changed | Validate plugin components |
 | `version-check.yml` | Version files changed | Ensure version consistency |
 | `validate-workflows.yml` | `.github/workflows/**` changed | Lint GitHub Actions |
-| `claude-pr-review.yml` | Always (non-draft PRs) | AI-powered code review |
+| `claude-pr-review.yml` | All PRs (non-draft) | AI-powered code review |
 
 ### Other Workflows
 
