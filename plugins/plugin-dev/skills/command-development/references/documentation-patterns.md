@@ -587,9 +587,9 @@ TESTING:
   - Manual test checklist: tests/manual-checklist.md
 
 FUTURE IMPROVEMENTS:
-  - TODO: Add support for TOML format
-  - TODO: Implement parallel processing
-  - TODO: Add progress bar for large files
+  - Add support for TOML format
+  - Implement parallel processing
+  - Add progress bar for large files
 
 RELATED FILES:
   - lib/parser.sh: Shared parsing logic
