@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository is a **plugin marketplace** containing the **plugin-dev** plugin - a comprehensive toolkit for developing Claude Code plugins. It provides 7 specialized skills, 3 agents, and 1 guided workflow command for building high-quality plugins.
 
+## Quick Reference
+
+**Current Version**: v0.1.0
+
 ## Repository Structure
 
 ```
@@ -21,6 +25,15 @@ plugin-dev/                      # Marketplace root
 │       └── skills/              # 7 specialized skills
 └── .github/workflows/           # CI/CD workflows
 ```
+
+## Architecture Note
+
+This repo has two levels of `.claude-plugin/`:
+
+- **Root level**: `/.claude-plugin/marketplace.json` - Marketplace manifest listing available plugins
+- **Plugin level**: `/plugins/plugin-dev/.claude-plugin/plugin.json` - Individual plugin manifest
+
+When testing locally, point to the plugin directory, not the root.
 
 ## Key Conventions
 
@@ -154,3 +167,7 @@ Key workflows in `.github/workflows/`:
 - `component-validation.yml` - Validates plugin components
 - `links.yml` - Checks for broken links (uses lychee)
 - `claude-pr-review.yml` - AI-powered PR review
+- `claude.yml` - Claude Code automation
+- `ci-failure-analysis.yml` - Analyzes CI failures
+- `validate-workflows.yml` - Validates GitHub Actions syntax
+- `version-check.yml` - Validates version consistency
