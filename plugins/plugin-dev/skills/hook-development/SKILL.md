@@ -1,6 +1,6 @@
 ---
 name: hook-development
-description: This skill should be used when the user asks to "create a hook", "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement prompt-based hooks", "use ${CLAUDE_PLUGIN_ROOT}", "set up event-driven automation", "block dangerous commands", or mentions hook events (PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification). Provides comprehensive guidance for creating and implementing Claude Code plugin hooks with focus on advanced prompt-based hooks API.
+description: This skill should be used when the user asks to "create a hook", "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement prompt-based hooks", "use ${CLAUDE_PLUGIN_ROOT}", "set up event-driven automation", "block dangerous commands", or mentions hook events (PreToolUse, PermissionRequest, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification). Provides comprehensive guidance for creating and implementing Claude Code plugin hooks with focus on advanced prompt-based hooks API.
 ---
 
 # Hook Development for Claude Code Plugins
@@ -158,6 +158,54 @@ Execute before any tool runs. Use to approve, deny, or modify tool calls.
   "systemMessage": "Explanation for Claude"
 }
 ```
+
+### PermissionRequest
+
+Execute when user is shown a permission dialog. Use to automatically allow or deny permissions.
+
+**Example:**
+
+```json
+{
+  "PermissionRequest": [
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/check-permission.sh"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Output for PermissionRequest:**
+
+```json
+{
+  "hookSpecificOutput": {
+    "decision": {
+      "behavior": "allow|deny",
+      "updatedInput": {"command": "modified command"},
+      "message": "Reason for denial",
+      "interrupt": false
+    }
+  }
+}
+```
+
+- `behavior`: "allow" to approve, "deny" to reject
+- `updatedInput`: Optional modified tool parameters (only with "allow")
+- `message`: Explanation shown to user (only with "deny")
+- `interrupt`: If true with "deny", stops the current operation
+
+**Use cases:**
+
+- Auto-approve safe commands matching patterns
+- Block dangerous operations with explanations
+- Modify tool inputs before execution
 
 ### PostToolUse
 
@@ -327,7 +375,7 @@ All hooks receive JSON via stdin with common fields:
 
 **Event-specific fields:**
 
-- **PreToolUse/PostToolUse:** `tool_name`, `tool_input`, `tool_result`
+- **PreToolUse/PermissionRequest/PostToolUse:** `tool_name`, `tool_input`, `tool_result`
 - **UserPromptSubmit:** `user_prompt`
 - **Stop/SubagentStop:** `reason`
 
@@ -596,6 +644,7 @@ echo "$output" | jq .
 | Event | When | Use For |
 |-------|------|---------|
 | PreToolUse | Before tool | Validation, modification |
+| PermissionRequest | Permission dialog | Auto-allow/deny |
 | PostToolUse | After tool | Feedback, logging |
 | UserPromptSubmit | User input | Context, validation |
 | Stop | Agent stopping | Completeness check |
