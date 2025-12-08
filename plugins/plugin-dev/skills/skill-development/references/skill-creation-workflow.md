@@ -70,7 +70,7 @@ When editing the (newly-created or existing) skill, remember that the skill is b
 
 To begin implementation, start with the reusable resources identified above: `scripts/`, `references/`, and `assets/` files. Note that this step may require user input. For example, when implementing a `brand-guidelines` skill, the user may need to provide brand assets or templates to store in `assets/`, or documentation to store in `references/`.
 
-Also, delete any example files and directories not needed for the skill. Create only the directories you actually need (references/, examples/, scripts/).
+Also, delete any example files and directories not needed for the skill. Create only the directories actually needed (references/, examples/, scripts/).
 
 ### Update SKILL.md
 
