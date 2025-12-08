@@ -123,6 +123,9 @@ echo "🎯 TRIGGER PHRASES"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
+# Initialize warning counter early (used across sections)
+warning_count=0
+
 # Extract user phrases from examples
 USER_PHRASES=$(echo "$DESCRIPTION" | grep -oE 'user: *"[^"]*"' | sed 's/user: *"//' | sed 's/"$//' || true)
 
@@ -130,7 +133,7 @@ if [ -z "$USER_PHRASES" ]; then
   echo "⚠️  Could not extract user phrases from examples"
   echo ""
   echo "Make sure examples include 'user: \"phrase\"' format"
-  ((error_count++))
+  ((warning_count++))
 else
   echo "Use these phrases to test agent triggering:"
   echo ""
@@ -144,8 +147,6 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "✅ VALIDATION"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-
-warning_count=0
 
 # Check for "Use this agent when" pattern
 if ! echo "$DESCRIPTION" | grep -qi 'use this agent when'; then
