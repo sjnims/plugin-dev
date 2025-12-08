@@ -477,6 +477,7 @@ Working examples in `examples/`:
 
 Development tools in `scripts/`:
 
+- **`create-agent-skeleton.sh`** - Generate new agent file from template
 - **`validate-agent.sh`** - Validate agent file structure
 - **`test-agent-trigger.sh`** - Test if agent triggers correctly
 
@@ -486,7 +487,7 @@ To create an agent for a plugin:
 
 1. Define agent purpose and triggering conditions
 2. Choose creation method (AI-assisted or manual)
-3. Create `agents/agent-name.md` file
+3. Create agent file using skeleton: `./skills/agent-development/scripts/create-agent-skeleton.sh agent-name agents/`
 4. Write frontmatter with all required fields
 5. Write system prompt following best practices
 6. Include 2-4 triggering examples in description
