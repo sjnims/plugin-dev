@@ -677,7 +677,7 @@ echo "Test: \$1 and \$2" > .claude/commands/test-args.md
 grep "allowed-tools" .claude/commands/my-command.md
 
 # Verify command syntax
-grep '!\`' .claude/commands/my-command.md
+grep '!`' .claude/commands/my-command.md
 
 # Test command manually
 date
