@@ -713,3 +713,19 @@ For self-documenting command patterns and maintenance docs, see `references/docu
 For testing approaches from syntax validation to user acceptance, see `references/testing-strategies.md`.
 For distribution guidelines and quality standards, see `references/marketplace-considerations.md`.
 For command pattern examples, see `examples/` directory.
+
+## Validation Scripts
+
+Utility scripts for validating commands (execute without loading into context):
+
+```bash
+# Validate command file structure
+./scripts/validate-command.sh .claude/commands/my-command.md
+
+# Validate YAML frontmatter fields
+./scripts/check-frontmatter.sh .claude/commands/my-command.md
+
+# Validate multiple files
+./scripts/validate-command.sh commands/*.md
+./scripts/check-frontmatter.sh commands/*.md
+```
