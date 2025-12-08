@@ -62,7 +62,7 @@ When a security vulnerability is confirmed:
 2. **GitHub CLI**: Ensure your `gh` CLI is updated (`gh auth refresh`)
 3. **Permissions**: Only grant the minimum required GitHub permissions (`repo`, `project`)
 4. **Authentication**: Use GitHub's recommended authentication methods
-5. **Review Commands**: Review what each `/re:*` command does before running it
+5. **Review Commands**: Review what each `/plugin-dev:*` command does before running it
 
 ### For Contributors
 

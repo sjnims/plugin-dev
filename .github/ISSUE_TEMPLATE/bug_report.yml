@@ -24,7 +24,7 @@ body:
       description: Steps to reproduce the behavior
       placeholder: |
         1. Load plugin with `cc --plugin-dir plugins/plugin-dev`
-        2. Run command `/re:init`
+        2. Run command `/plugin-dev:create-plugin`
         3. See error...
     validations:
       required: true

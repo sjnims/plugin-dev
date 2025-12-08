@@ -8,7 +8,7 @@ This repository is a **plugin marketplace** containing the **plugin-dev** plugin
 
 ## Quick Reference
 
-**Current Version**: v0.1.0
+**Current Version**: v0.1.0 (synced in `plugin.json`, `marketplace.json`, and this file)
 
 ## Repository Structure
 
@@ -78,17 +78,22 @@ Test the plugin locally:
 cc --plugin-dir plugins/plugin-dev
 ```
 
-Validate components (paths relative to `plugins/plugin-dev/`):
+Utility scripts (paths relative to `plugins/plugin-dev/`):
 
 ```bash
-# Validate hooks
-./skills/hook-development/scripts/validate-hook-schema.sh hooks/hooks.json
-
-# Validate agents
+# Agent development
+./skills/agent-development/scripts/create-agent-skeleton.sh <name> [dir]
 ./skills/agent-development/scripts/validate-agent.sh agents/agent-name.md
+./skills/agent-development/scripts/test-agent-trigger.sh agents/agent-name.md
 
-# Validate settings
+# Hook development
+./skills/hook-development/scripts/validate-hook-schema.sh hooks/hooks.json
+./skills/hook-development/scripts/test-hook.sh hooks/my-hook.sh input.json
+./skills/hook-development/scripts/hook-linter.sh hooks/my-hook.sh
+
+# Plugin settings
 ./skills/plugin-settings/scripts/validate-settings.sh .claude/plugin.local.md
+./skills/plugin-settings/scripts/parse-frontmatter.sh .claude/plugin.local.md
 ```
 
 ## Linting
@@ -99,6 +104,9 @@ markdownlint '**/*.md' --ignore node_modules
 
 # Auto-fix markdown issues
 markdownlint '**/*.md' --ignore node_modules --fix
+
+# Lint shell scripts
+shellcheck plugins/plugin-dev/skills/*/scripts/*.sh
 ```
 
 ## Component Patterns
@@ -164,10 +172,9 @@ Use these agents proactively after creating components:
 Key workflows in `.github/workflows/`:
 
 - `markdownlint.yml` - Lints all markdown on PR/push
-- `component-validation.yml` - Validates plugin components
+- `component-validation.yml` - Validates plugin components (agents, hooks, skills)
+- `version-check.yml` - Validates version consistency across plugin.json and marketplace.json
 - `links.yml` - Checks for broken links (uses lychee)
 - `claude-pr-review.yml` - AI-powered PR review
-- `claude.yml` - Claude Code automation
-- `ci-failure-analysis.yml` - Analyzes CI failures
-- `validate-workflows.yml` - Validates GitHub Actions syntax
-- `version-check.yml` - Validates version consistency
+
+Additional workflows handle labeling, stale issues, and maintenance tasks.

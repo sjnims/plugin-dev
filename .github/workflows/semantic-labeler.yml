@@ -65,7 +65,7 @@ jobs:
             - `chore` - Maintenance tasks (dependencies, CI, etc.)
 
             **COMPONENT (choose ALL that apply based on what the issue discusses):**
-            - `component:command` - Related to /re:* slash commands
+            - `component:command` - Related to /plugin-dev:* slash commands
             - `component:skill` - Related to methodology skills
             - `component:agent` - Related to agents
             - `component:hook` - Related to hooks

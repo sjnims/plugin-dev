@@ -1,6 +1,6 @@
-# Contributing to Requirements Expert
+# Contributing to Plugin Dev
 
-Thank you for your interest in contributing to the Requirements Expert plugin for Claude Code! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to the Plugin Dev toolkit for Claude Code! This document provides guidelines and instructions for contributing.
 
 ## Table of Contents
 
@@ -52,8 +52,10 @@ Before contributing, ensure you have:
    └── agents/        # 3 specialized agents
    ```
 
-3. **Understand the methodology**:
-   - [ ]TODO: Link to methodology docs or summarize key points]
+3. **Understand the plugin components**:
+   - 7 skills for different plugin development aspects
+   - 3 agents for validation and generation
+   - 1 guided workflow command (`/plugin-dev:create-plugin`)
 
 ## Development Setup
 
