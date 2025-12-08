@@ -334,6 +334,46 @@ Ensure:
 
 Commands can execute bash commands inline to dynamically gather context before Claude processes the command. This is useful for including repository state, environment information, or project-specific context.
 
+### Syntax: The `!` Prefix
+
+In actual command files, use the `!` prefix before backticks for pre-execution:
+
+```markdown
+Current branch: !`git branch --show-current`
+Files changed: !`git diff --name-only`
+Environment: !`echo $NODE_ENV`
+```
+
+**How it works:**
+
+1. Before Claude sees the command, Claude Code executes `!`command`` blocks
+2. The bash output replaces the entire `!`command`` expression
+3. Claude receives the expanded prompt with actual values
+
+**Example expansion:**
+
+Command file contains:
+
+```markdown
+Review the !`git diff --name-only | wc -l | tr -d ' '` changed files on branch !`git branch --show-current`.
+```
+
+Claude receives (after pre-execution):
+
+```markdown
+Review the 3 changed files on branch feature/add-auth.
+```
+
+### Why Skill Examples Omit `!`
+
+Examples in skill documentation use plain backticks without `!`:
+
+```markdown
+Files changed: `git diff --name-only`
+```
+
+This is intentional. When skill content loads into Claude's context, `!`command`` would actually execute. Skill examples show the conceptual pattern; add the `!` prefix when writing actual command files.
+
 **When to use:**
 
 - Include dynamic context (git status, environment vars, etc.)
@@ -341,7 +381,7 @@ Commands can execute bash commands inline to dynamically gather context before C
 - Build context-aware workflows
 
 **Implementation details:**
-For complete syntax, examples, and best practices, see `references/plugin-features-reference.md` section on bash execution. The reference includes the exact syntax and multiple working examples to avoid execution issues
+For advanced patterns, environment-specific configurations, and plugin integration, see `references/plugin-features-reference.md`
 
 ## Command Organization
 
