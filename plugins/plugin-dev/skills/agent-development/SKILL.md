@@ -18,6 +18,40 @@ Agents are autonomous subprocesses that handle complex, multi-step tasks indepen
 
 > **⚠️ Field Name Difference:** Agents use `tools` to restrict tool access. Skills use `allowed-tools` for the same purpose. Don't confuse these when switching between component types.
 
+## Quick Start
+
+Minimal working agent (copy-paste ready):
+
+```markdown
+---
+name: my-reviewer
+description: Use this agent when the user asks to review code. Examples:
+
+<example>
+Context: User wrote new code
+user: "Review my changes"
+assistant: "I'll use the my-reviewer agent to analyze the code."
+<commentary>
+Code review request triggers the agent.
+</commentary>
+</example>
+
+model: inherit
+color: blue
+---
+
+You are a code reviewer. Analyze code for issues and provide feedback.
+
+**Process:**
+1. Read the code
+2. Identify issues
+3. Provide recommendations
+
+**Output:** Summary with file:line references for each finding.
+```
+
+For complete format with all options, see [Agent File Structure](#agent-file-structure).
+
 ## When to Use Agents vs Commands vs Skills
 
 | Component | Best For | Triggering | Example Use Case |
@@ -164,7 +198,9 @@ Which model the agent should use.
 - `sonnet` - Balanced performance; most use cases (default recommendation)
 - `opus` - Complex reasoning; detailed analysis; highest capability needed
 
-**Recommendation:** Use `inherit` unless agent needs specific model capabilities.
+**Recommendation:** Use `inherit` (recommended default) unless the agent specifically needs:
+- `haiku` for fast, cost-sensitive operations
+- `opus` for complex reasoning requiring maximum capability
 
 ### color (required)
 
