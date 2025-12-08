@@ -156,6 +156,12 @@ Which model the agent should use.
 - `opus` - Claude Opus (most capable, expensive)
 - `haiku` - Claude Haiku (fast, cheap)
 
+**When to choose:**
+
+- `haiku` - Fast, simple tasks; quick analysis; cost-sensitive operations
+- `sonnet` - Balanced performance; most use cases (default recommendation)
+- `opus` - Complex reasoning; detailed analysis; highest capability needed
+
 **Recommendation:** Use `inherit` unless agent needs specific model capabilities.
 
 ### color (required)
@@ -390,6 +396,8 @@ Output: [What to provide]
 | color | Yes | Color name | blue |
 | tools | No | Array of tool names | ["Read", "Grep"] |
 
+> **Note:** Agents use `tools` to restrict tool access. Skills use `allowed-tools` for the same purpose. The field names differ between component types.
+
 ### Best Practices
 
 **DO:**
@@ -414,9 +422,9 @@ Output: [What to provide]
 
 For detailed guidance, consult:
 
-- **`references/system-prompt-design.md`** - Complete system prompt patterns
-- **`references/triggering-examples.md`** - Example formats and best practices
-- **`references/agent-creation-system-prompt.md`** - The exact prompt from Claude Code
+- **`references/system-prompt-design.md`** - Four system prompt patterns (Analysis, Generation, Validation, Orchestration) with complete templates and common pitfalls
+- **`references/triggering-examples.md`** - Example block anatomy, four example types, template library, and debugging guide
+- **`references/agent-creation-system-prompt.md`** - The exact prompt used by Claude Code's agent generation feature with usage patterns
 
 ### Example Files
 
@@ -442,7 +450,7 @@ To create an agent for a plugin:
 4. Write frontmatter with all required fields
 5. Write system prompt following best practices
 6. Include 2-4 triggering examples in description
-7. Validate with `scripts/validate-agent.sh`
+7. Validate with `./skills/agent-development/scripts/validate-agent.sh agents/your-agent.md`
 8. Test triggering with real scenarios
 9. Document agent in plugin README
 
