@@ -198,6 +198,8 @@ Before finalizing a skill:
 
 - [ ] SKILL.md file exists with valid YAML frontmatter
 - [ ] Frontmatter has `name` and `description` fields
+- [ ] Name uses only lowercase letters, numbers, and hyphens (max 64 chars)
+- [ ] Description is under 1024 characters
 - [ ] (Optional) `allowed-tools` field if restricting tool access
 - [ ] Markdown body is present and substantial
 - [ ] Referenced files actually exist
@@ -297,8 +299,8 @@ Copy-paste ready skill templates in `examples/`:
 
 For detailed guidance, consult:
 
-- **`references/skill-creation-workflow.md`** - Complete step-by-step skill creation process with examples, writing style guide, and common mistakes to avoid
-- **`references/skill-creator-original.md`** - Full original skill-creator methodology
+- **`references/skill-creation-workflow.md`** - Plugin-specific skill creation workflow (recommended for plugin skills)
+- **`references/skill-creator-original.md`** - Original generic skill-creator methodology (includes init/packaging scripts for standalone skills)
 
 ### Study These Skills
 
