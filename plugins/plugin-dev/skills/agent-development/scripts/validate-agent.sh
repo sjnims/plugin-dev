@@ -65,8 +65,8 @@ else
   echo "✅ name: $NAME"
 
   # Validate name format
-  if ! [[ "$NAME" =~ ^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]$ ]]; then
-    echo "❌ name must start/end with alphanumeric and contain only letters, numbers, hyphens"
+  if ! [[ "$NAME" =~ ^[a-z0-9][a-z0-9-]*[a-z0-9]$ ]]; then
+    echo "❌ name must start/end with lowercase alphanumeric and contain only lowercase letters, numbers, hyphens"
     ((error_count++))
   fi
 
