@@ -155,7 +155,8 @@ allowed-tools: Read, Write, Edit, Bash(git:*)
 ### model
 
 **Purpose:** Specify model for command execution
-**Type:** String (sonnet, opus, haiku)
+**Type:** String
+**Values:** Shorthand (`sonnet`, `opus`, `haiku`) or full model ID (e.g., `claude-sonnet-4-5-20250929`)
 **Default:** Inherits from conversation
 
 ```yaml
@@ -169,6 +170,8 @@ model: haiku
 - `haiku` - Fast, simple commands
 - `sonnet` - Standard workflows
 - `opus` - Complex analysis
+
+Shorthand names use the current default version of each model family.
 
 ### argument-hint
 

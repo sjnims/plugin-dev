@@ -132,7 +132,12 @@ allowed-tools: "*"
 **Type:** String
 **Required:** No
 **Default:** Inherits from conversation
-**Values:** `sonnet`, `opus`, `haiku`
+**Values:**
+
+- Shorthand: `sonnet`, `opus`, `haiku`
+- Full model ID: `claude-sonnet-4-5-20250929`, `claude-haiku-4-5-20251001`, etc.
+
+Both formats are accepted. Shorthand names use the current default version of each model family.
 
 **Purpose:** Specify which Claude model executes the command
 
@@ -440,7 +445,7 @@ allowed-tools: Bash  # ❌ Missing command filter
 model: gpt4  # ❌ Not a valid Claude model
 ```
 
-**Fix:** Use `sonnet`, `opus`, or `haiku`
+**Fix:** Use shorthand (`sonnet`, `opus`, `haiku`) or full model ID (e.g., `claude-sonnet-4-5-20250929`)
 
 ### Validation Checklist
 
