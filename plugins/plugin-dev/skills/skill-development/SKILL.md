@@ -285,6 +285,14 @@ Good for: Complex domains with validation utilities
 
 ## Additional Resources
 
+### Example Skills
+
+Copy-paste ready skill templates in `examples/`:
+
+- **`examples/minimal-skill.md`** - Bare-bones skill with just SKILL.md (git conventions example)
+- **`examples/complete-skill.md`** - Full skill with references/, examples/, and scripts/ (API testing example)
+- **`examples/frontmatter-templates.md`** - Quick-reference frontmatter patterns for common use cases
+
 ### Reference Files
 
 For detailed guidance, consult:
