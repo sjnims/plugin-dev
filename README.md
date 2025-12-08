@@ -66,7 +66,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - ${CLAUDE_PLUGIN_ROOT} for portable paths
 
 **Resources:**
-- Core SKILL.md (1,619 words)
+- Core SKILL.md (2,125 words)
 - 3 example hook scripts (validate-write, validate-bash, load-context)
 - 3 reference docs: patterns, migration, advanced techniques
 - 3 utility scripts: validate-hook-schema.sh, test-hook.sh, hook-linter.sh
@@ -86,9 +86,9 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Integration patterns and performance optimization
 
 **Resources:**
-- Core SKILL.md (1,666 words)
+- Core SKILL.md (1,663 words)
 - 3 example configurations (stdio, SSE, HTTP)
-- 3 reference docs: server-types (~3,200w), authentication (~2,800w), tool-usage (~2,600w)
+- 3 reference docs: server-types (~1,370w), authentication (~1,280w), tool-usage (~1,540w)
 
 **Use when:** Integrating external services, APIs, databases, or tools into your plugin.
 
@@ -105,7 +105,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Minimal, standard, and advanced plugin patterns
 
 **Resources:**
-- Core SKILL.md (1,619 words)
+- Core SKILL.md (1,654 words)
 - 3 example structures (minimal, standard, advanced)
 - 2 reference docs: component-patterns, manifest-reference
 
@@ -145,7 +145,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Best practices for command development
 
 **Resources:**
-- Core SKILL.md (1,535 words)
+- Core SKILL.md (2,235 words)
 - Examples and reference documentation
 - Command organization patterns
 
@@ -165,9 +165,9 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Complete production-ready agent examples
 
 **Resources:**
-- Core SKILL.md (1,438 words)
+- Core SKILL.md (1,896 words)
 - 2 examples: agent-creation-prompt (AI-assisted workflow), complete-agent-examples (4 full agents)
-- 3 reference docs: agent-creation-system-prompt (from Claude Code), system-prompt-design (~4,000w), triggering-examples (~2,500w)
+- 3 reference docs: agent-creation-system-prompt (from Claude Code), system-prompt-design (~1,400w), triggering-examples (~1,600w)
 - 1 utility script: validate-agent.sh
 
 **Use when:** Creating autonomous agents, defining agent behavior, or implementing AI-assisted agent generation.
@@ -186,7 +186,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Based on skill-creator methodology adapted for Claude Code plugins
 
 **Resources:**
-- Core SKILL.md (1,232 words)
+- Core SKILL.md (1,463 words)
 - References: skill-creator methodology, plugin-dev patterns
 - Examples: Study plugin-dev's own skills as templates
 
@@ -307,7 +307,7 @@ All skills follow consistent standards:
 
 ## Total Content
 
-- **Core Skills**: ~11,065 words across 7 SKILL.md files
+- **Core Skills**: ~12,659 words across 7 SKILL.md files
 - **Reference Docs**: ~10,000+ words of detailed guides
 - **Examples**: 12+ working examples (hook scripts, MCP configs, plugin layouts, settings files)
 - **Utilities**: 10 production-ready validation/testing/parsing scripts

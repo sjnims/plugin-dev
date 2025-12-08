@@ -170,7 +170,7 @@ Study the skills in this plugin as examples of best practices:
 **hook-development skill:**
 
 - Excellent trigger phrases: "create a hook", "add a PreToolUse hook", etc.
-- Lean SKILL.md (1,651 words)
+- Lean SKILL.md (2,125 words)
 - 3 references/ files for detailed content
 - 3 examples/ of working hooks
 - 3 scripts/ utilities
@@ -178,7 +178,7 @@ Study the skills in this plugin as examples of best practices:
 **agent-development skill:**
 
 - Strong triggers: "create an agent", "agent frontmatter", etc.
-- Focused SKILL.md (1,438 words)
+- Focused SKILL.md (1,896 words)
 - References include the AI generation prompt from Claude Code
 - Complete agent examples
 
