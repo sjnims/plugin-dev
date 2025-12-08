@@ -42,6 +42,28 @@ skill-name/
 
 **Metadata Quality:** The `name` and `description` in YAML frontmatter determine when Claude will use the skill. Be specific about what the skill does and when to use it. Use the third-person (e.g. "This skill should be used when..." instead of "Use this skill when...").
 
+#### Optional Frontmatter Fields
+
+##### allowed-tools
+
+Optionally restrict which tools Claude can use when the skill is active:
+
+```yaml
+---
+name: code-reviewer
+description: Review code for best practices...
+allowed-tools: Read, Grep, Glob
+---
+```
+
+Use `allowed-tools` for:
+
+- Read-only skills that shouldn't modify files
+- Security-sensitive workflows
+- Skills with limited scope
+
+When specified, Claude can only use the listed tools without needing permission. If omitted, Claude follows the standard permission model.
+
 #### Bundled Resources (optional)
 
 ##### Scripts (`scripts/`)
@@ -176,6 +198,7 @@ Before finalizing a skill:
 
 - [ ] SKILL.md file exists with valid YAML frontmatter
 - [ ] Frontmatter has `name` and `description` fields
+- [ ] (Optional) `allowed-tools` field if restricting tool access
 - [ ] Markdown body is present and substantial
 - [ ] Referenced files actually exist
 
