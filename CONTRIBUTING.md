@@ -231,9 +231,28 @@ When creating and/or modifying hooks:
 
 ## Testing
 
+### Validation Scripts
+
+Use the built-in validation scripts before submitting (paths relative to `plugins/plugin-dev/`):
+
+```bash
+# Validate agents
+./skills/agent-development/scripts/validate-agent.sh agents/my-agent.md
+
+# Validate commands
+./skills/command-development/scripts/validate-command.sh commands/my-command.md
+
+# Validate hooks
+./skills/hook-development/scripts/validate-hook-schema.sh hooks/hooks.json
+
+# Validate plugin settings
+./skills/plugin-settings/scripts/validate-settings.sh .claude/plugin.local.md
+```
+
 ### Local Testing Checklist
 
 - [ ] Load plugin: `cc --plugin-dir plugins/plugin-dev`
+- [ ] Run validation scripts for changed components
 - [ ] Test affected commands
 - [ ] Verify GitHub CLI integration works
 - [ ] Test in a clean repository (not your development repo)

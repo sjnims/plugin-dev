@@ -96,6 +96,10 @@ Utility scripts (paths relative to `plugins/plugin-dev/`):
 ./skills/agent-development/scripts/validate-agent.sh agents/agent-name.md
 ./skills/agent-development/scripts/test-agent-trigger.sh agents/agent-name.md
 
+# Command development
+./skills/command-development/scripts/validate-command.sh .claude/commands/my-command.md
+./skills/command-development/scripts/check-frontmatter.sh .claude/commands/my-command.md
+
 # Hook development
 ./skills/hook-development/scripts/validate-hook-schema.sh hooks/hooks.json
 ./skills/hook-development/scripts/test-hook.sh hooks/my-hook.sh input.json

@@ -268,17 +268,23 @@ This keeps Claude Code's context focused while providing deep knowledge when nee
 
 ### Utility Scripts
 
-The hook-development skill includes production-ready utilities:
+Each skill includes production-ready utilities (paths relative to `plugins/plugin-dev/`):
 
 ```bash
-# Validate hooks.json structure
-./validate-hook-schema.sh hooks/hooks.json
+# Agent development
+./skills/agent-development/scripts/validate-agent.sh agents/my-agent.md
+./skills/agent-development/scripts/test-agent-trigger.sh agents/my-agent.md
 
-# Test hooks before deployment
-./test-hook.sh my-hook.sh test-input.json
+# Command development
+./skills/command-development/scripts/validate-command.sh commands/my-command.md
+./skills/command-development/scripts/check-frontmatter.sh commands/my-command.md
 
-# Lint hook scripts for best practices
-./hook-linter.sh my-hook.sh
+# Hook development
+./skills/hook-development/scripts/validate-hook-schema.sh hooks/hooks.json
+./skills/hook-development/scripts/test-hook.sh my-hook.sh test-input.json
+
+# Plugin settings
+./skills/plugin-settings/scripts/validate-settings.sh .claude/plugin.local.md
 ```
 
 ### Working Examples
@@ -304,7 +310,7 @@ All skills follow consistent standards:
 - **Core Skills**: ~11,065 words across 7 SKILL.md files
 - **Reference Docs**: ~10,000+ words of detailed guides
 - **Examples**: 12+ working examples (hook scripts, MCP configs, plugin layouts, settings files)
-- **Utilities**: 6 production-ready validation/testing/parsing scripts
+- **Utilities**: 10 production-ready validation/testing/parsing scripts
 
 ## Use Cases
 
