@@ -182,7 +182,11 @@ Use these agents proactively after creating components:
 
 ### Other Workflows
 
+- `claude.yml` - Main Claude Code workflow
 - `stale.yml` - Manages stale issues/PRs (Mon/Wed/Fri)
 - `semantic-labeler.yml` - Auto-labels issues/PRs
 - `ci-failure-analysis.yml` - Analyzes CI failures
 - `weekly-maintenance.yml` - Scheduled maintenance tasks
+- `dependabot-auto-merge.yml` - Auto-merges dependabot PRs
+- `sync-labels.yml` - Synchronizes repository labels
+- `greet.yml` - Greets new contributors
