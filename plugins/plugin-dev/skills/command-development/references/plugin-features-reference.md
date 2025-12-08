@@ -393,9 +393,9 @@ description: Commit with pre-commit validation
 allowed-tools: Bash(git:*)
 ---
 
-Stage changes: !\`git add $1\`
+Stage changes: !`git add $1`
 
-Commit changes: !\`git commit -m "$2"\`
+Commit changes: !`git commit -m "$2"`
 
 Note: This commit will trigger the plugin's pre-commit hook for validation.
 Review hook output for any issues.
