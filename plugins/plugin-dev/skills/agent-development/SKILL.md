@@ -24,6 +24,8 @@ Agents are autonomous subprocesses that handle complex, multi-step tasks indepen
 | **Commands** | User-initiated actions | Explicit `/command` invocation | `/deploy production` |
 | **Skills** | Knowledge and guidance | Model-invoked based on context | Domain expertise for PDF processing |
 
+> **See also:** For command development, load the `command-development` skill. For skill development, load the `skill-development` skill.
+
 ### Choose Agents When
 
 - Task requires autonomous, multi-step execution
@@ -38,12 +40,16 @@ Agents are autonomous subprocesses that handle complex, multi-step tasks indepen
 - Action should not happen automatically
 - Workflow requires user confirmation at each step
 
+For command development guidance, see the `command-development` skill.
+
 ### Choose Skills When
 
 - Providing knowledge or procedural guidance
 - Extending Claude's domain expertise
 - No autonomous execution needed
 - Information should be available contextually on-demand
+
+For skill development guidance, see the `skill-development` skill.
 
 ## Agent File Structure
 
