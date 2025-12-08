@@ -139,6 +139,8 @@ allowed-tools: "*"
 
 Both formats are accepted. Shorthand names use the current default version of each model family.
 
+> **Note:** Model ID examples above reflect December 2025 releases. Anthropic releases new model versions periodically. For current model IDs, consult [Claude Models Overview](https://docs.anthropic.com/en/docs/about-claude/models).
+
 **Purpose:** Specify which Claude model executes the command
 
 **Examples:**
