@@ -16,7 +16,7 @@ Agents are autonomous subprocesses that handle complex, multi-step tasks indepen
 - System prompt defines agent behavior
 - Model and color customization
 
-> **⚠️ Field Name Difference:** Agents use `tools` to restrict tool access. Skills use `allowed-tools` for the same purpose. Don't confuse these when switching between component types.
+> **Important - Field Name Difference:** Agents use `tools` to restrict tool access. Skills use `allowed-tools` for the same purpose. Don't confuse these when switching between component types.
 
 ## Quick Start
 
