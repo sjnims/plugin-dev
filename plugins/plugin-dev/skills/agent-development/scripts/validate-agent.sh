@@ -72,10 +72,10 @@ else
 
   # Validate name length
   name_length=${#NAME}
-  if [ $name_length -lt 3 ]; then
+  if [ "$name_length" -lt 3 ]; then
     echo "❌ name too short (minimum 3 characters)"
     ((error_count++))
-  elif [ $name_length -gt 50 ]; then
+  elif [ "$name_length" -gt 50 ]; then
     echo "❌ name too long (maximum 50 characters)"
     ((error_count++))
   fi
@@ -87,8 +87,18 @@ else
   fi
 fi
 
-# Check description field
-DESCRIPTION=$(echo "$FRONTMATTER" | grep '^description:' | sed 's/description: *//')
+# Check description field - handles multi-line YAML
+# Description ends when we hit another top-level field (model:, color:, tools:, name:)
+DESCRIPTION=$(echo "$FRONTMATTER" | awk '
+  /^description:/ {
+    in_desc = 1
+    sub(/^description: */, "")
+    if ($0 != "") print
+    next
+  }
+  in_desc && /^(model|color|tools|name):/ { exit }
+  in_desc { print }
+')
 
 if [ -z "$DESCRIPTION" ]; then
   echo "❌ Missing required field: description"
@@ -97,10 +107,10 @@ else
   desc_length=${#DESCRIPTION}
   echo "✅ description: ${desc_length} characters"
 
-  if [ $desc_length -lt 10 ]; then
+  if [ "$desc_length" -lt 10 ]; then
     echo "⚠️  description too short (minimum 10 characters recommended)"
     ((warning_count++))
-  elif [ $desc_length -gt 5000 ]; then
+  elif [ "$desc_length" -gt 5000 ]; then
     echo "⚠️  description very long (over 5000 characters)"
     ((warning_count++))
   fi
@@ -178,10 +188,10 @@ else
   prompt_length=${#SYSTEM_PROMPT}
   echo "✅ System prompt: $prompt_length characters"
 
-  if [ $prompt_length -lt 20 ]; then
+  if [ "$prompt_length" -lt 20 ]; then
     echo "❌ System prompt too short (minimum 20 characters)"
     ((error_count++))
-  elif [ $prompt_length -gt 10000 ]; then
+  elif [ "$prompt_length" -gt 10000 ]; then
     echo "⚠️  System prompt very long (over 10,000 characters)"
     ((warning_count++))
   fi
