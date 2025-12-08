@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository is a **plugin marketplace** containing the **plugin-dev** plugin - a comprehensive toolkit for developing Claude Code plugins. It provides 7 specialized skills, 3 agents, and 1 guided workflow command for building high-quality plugins.
 
+## Quick Reference
+
+**Current Version**: v0.1.0
+
 ## Repository Structure
 
 ```
