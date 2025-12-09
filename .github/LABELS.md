@@ -49,6 +49,7 @@ Time estimates:
 **Special**:
 - `experiment` - Testing/experimental changes
 - `pinned` - Never mark as stale
+- `reverted` - Merged but later reverted from codebase
 - `security` - Security-related issues
 - `stale` - No recent activity (auto-applied by stale workflow)
 

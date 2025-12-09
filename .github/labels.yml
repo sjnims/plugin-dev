@@ -142,6 +142,10 @@
   color: "ededed"
   description: "No recent activity - will be closed soon"
 
+- name: "reverted"
+  color: "666666"
+  description: "Merged but later reverted from codebase"
+
 # Category labels (type of change)
 - name: "breaking"
   color: "bd2130"
