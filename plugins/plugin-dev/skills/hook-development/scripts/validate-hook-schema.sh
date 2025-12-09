@@ -38,7 +38,7 @@ echo "✅ Valid JSON"
 # Check 2: Root structure
 echo ""
 echo "Checking root structure..."
-VALID_EVENTS=("PreToolUse" "PostToolUse" "UserPromptSubmit" "Stop" "SubagentStop" "SessionStart" "SessionEnd" "PreCompact" "Notification")
+VALID_EVENTS=("PreToolUse" "PermissionRequest" "PostToolUse" "UserPromptSubmit" "Stop" "SubagentStop" "SessionStart" "SessionEnd" "PreCompact" "Notification")
 
 for event in $(jq -r 'keys[]' "$HOOKS_FILE"); do
   found=false
