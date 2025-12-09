@@ -531,6 +531,12 @@ Working examples in `examples/`:
 - **`http-server.json`** - REST API with token auth
 - **`ws-server.json`** - WebSocket server for real-time communication
 
+### Scripts
+
+Utility scripts in `scripts/`:
+
+- **`search-mcp-servers.sh`** - Search MCP Registry with GitHub star rankings (see `references/discovery.md` for usage)
+
 ### External Resources
 
 - **Official MCP Docs**: <https://modelcontextprotocol.io/>
