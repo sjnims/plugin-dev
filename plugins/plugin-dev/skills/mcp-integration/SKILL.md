@@ -1,6 +1,6 @@
 ---
 name: mcp-integration
-description: This skill should be used when the user asks to "add MCP server", "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model Context Protocol", "connect external service", mentions "${CLAUDE_PLUGIN_ROOT} with MCP", or discusses MCP server types (SSE, stdio, HTTP, WebSocket). Provides comprehensive guidance for integrating Model Context Protocol servers into Claude Code plugins for external tool and service integration.
+description: This skill should be used when the user asks to "add MCP server", "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model Context Protocol", "connect external service", mentions "${CLAUDE_PLUGIN_ROOT} with MCP", discusses MCP server types (SSE, stdio, HTTP, WebSocket), or asks to "find MCP server", "discover MCP servers", "what MCP servers exist", "recommend MCP server for [service]". Provides comprehensive guidance for integrating Model Context Protocol servers into Claude Code plugins for external tool and service integration.
 ---
 
 # MCP Integration for Claude Code Plugins
@@ -60,6 +60,19 @@ Add `mcpServers` field to plugin.json:
 **Benefits:**
 - Single configuration file
 - Good for simple single-server plugins
+
+## Discovering MCP Servers
+
+Find existing MCP servers for your plugin using PulseMCP, the comprehensive MCP server directory with 6,800+ servers.
+
+**Discovery workflow:**
+
+1. Search PulseMCP using Tavily extract on `https://www.pulsemcp.com/servers?q=[keyword]`
+2. Evaluate results by classification (official vs community), popularity, and relevance
+3. Fetch detail pages for GitHub links and configuration examples
+4. Generate `.mcp.json` configuration based on server type
+
+**See `references/server-discovery.md`** for detailed search instructions, URL patterns, and curated server recommendations by category.
 
 ## MCP Server Types
 
@@ -517,6 +530,7 @@ Look for:
 
 For detailed information, consult:
 
+- **`references/server-discovery.md`** - Find MCP servers using PulseMCP directory
 - **`references/server-types.md`** - Deep dive on each server type
 - **`references/authentication.md`** - Authentication patterns and OAuth
 - **`references/tool-usage.md`** - Using MCP tools in commands and agents
