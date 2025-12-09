@@ -265,11 +265,20 @@ Recommended process for finding MCP servers:
 
 ## Discovery Script
 
-For automated discovery, see the companion script implementation in issue [#73](https://github.com/sjnims/plugin-dev/issues/73). Once implemented, usage:
+Use the discovery script for automated server search with popularity ranking:
 
 ```bash
-./scripts/search-mcp-servers.sh "filesystem" --limit 10
+# Basic search
+./scripts/search-mcp-servers.sh database postgres
+
+# Limit results and get JSON output
+./scripts/search-mcp-servers.sh --limit 5 --format json filesystem
+
+# Simple output for scripting (stars|name|url)
+./scripts/search-mcp-servers.sh --format simple github
 ```
+
+Run `./scripts/search-mcp-servers.sh --help` for all options.
 
 ## Quick Reference
 
