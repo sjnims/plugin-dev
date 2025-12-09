@@ -52,6 +52,14 @@ GET /v0/servers?search=database&limit=10
 GET /v0/servers?cursor=<cursor_from_previous_response>
 ```
 
+**Quick test:**
+
+```bash
+curl "https://registry.modelcontextprotocol.io/v0/servers?search=filesystem&limit=5"
+```
+
+No authentication required. Returns JSON with matching servers.
+
 ### Response Structure
 
 ```json
@@ -282,6 +290,8 @@ Before integrating an MCP server, verify:
 - [ ] Documentation exists
 - [ ] No obvious security issues
 - [ ] Works with current MCP protocol version
+
+**Verifying protocol compatibility:** Check the server's `package.json` for `@modelcontextprotocol/sdk` dependency version, or look for protocol version notes in the README.
 
 ### Quick Evaluation
 
