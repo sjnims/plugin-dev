@@ -406,7 +406,7 @@ This command uses the following Asana MCP tools:
 - **asana_create_task**: Create new task with details
 - **asana_update_task**: Update existing task properties
 
-Ensure you're authenticated to Asana before running this command.
+Ensure authentication to Asana before running this command.
 ```
 
 ## Testing Tool Usage
