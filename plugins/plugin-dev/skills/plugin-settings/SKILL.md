@@ -102,7 +102,7 @@ Commands can read settings files to customize behavior:
 ```markdown
 ---
 description: Process data with plugin
-allowed-tools: ["Read", "Bash"]
+allowed-tools: Read, Bash
 ---
 
 # Process Command
