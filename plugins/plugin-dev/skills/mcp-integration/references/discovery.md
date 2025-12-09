@@ -272,7 +272,7 @@ Use the discovery script for automated server search with popularity ranking:
 ./scripts/search-mcp-servers.sh database postgres
 
 # Limit results and get JSON output
-./scripts/search-mcp-servers.sh -n 5 --format json filesystem
+./scripts/search-mcp-servers.sh --limit 5 --format json filesystem
 
 # Simple output for scripting (stars|name|url)
 ./scripts/search-mcp-servers.sh --format simple github

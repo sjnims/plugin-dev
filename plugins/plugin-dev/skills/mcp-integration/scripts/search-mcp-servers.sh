@@ -87,6 +87,14 @@ check_dependencies() {
     echo -e "${RED}❌ Missing required dependencies:${RESET}" >&2
     for dep in "${missing[@]}"; do
       echo "   - $dep" >&2
+      case "$dep" in
+        "curl")
+          echo "     Install: brew install curl  OR  apt-get install curl" >&2 ;;
+        "jq")
+          echo "     Install: brew install jq  OR  apt-get install jq" >&2 ;;
+        "gh (GitHub CLI)")
+          echo "     Install: https://cli.github.com/" >&2 ;;
+      esac
     done
     exit 1
   fi
@@ -342,11 +350,12 @@ main() {
   done < <(echo "$servers" | jq -c '.[]')
 
   # Filter by transport if specified
+  # NOTE: Transport filtering is reserved for future use. The MCP Registry API
+  # does not currently include transport type in server metadata. When this data
+  # becomes available, client-side filtering will be implemented here.
   if [ -n "$transport" ]; then
-    # Note: Transport info may not be in registry response
-    # This is a placeholder for when that data becomes available
     if [ "$format" = "table" ]; then
-      echo -e "${YELLOW}Note: Transport filtering may not match all servers (data not always available)${RESET}"
+      echo -e "${YELLOW}Note: Transport filtering not yet available (registry doesn't provide transport data)${RESET}"
     fi
   fi
 
