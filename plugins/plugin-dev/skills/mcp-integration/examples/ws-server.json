@@ -1,0 +1,26 @@
+{
+  "_comment": "Example WebSocket MCP server configuration for real-time bidirectional communication",
+  "realtime-service": {
+    "type": "ws",
+    "url": "wss://mcp.example.com/ws",
+    "headers": {
+      "Authorization": "Bearer ${TOKEN}"
+    }
+  },
+  "streaming-data": {
+    "type": "ws",
+    "url": "wss://stream.example.com/mcp",
+    "headers": {
+      "X-API-Key": "${API_KEY}",
+      "X-Client-ID": "${CLIENT_ID}"
+    }
+  },
+  "live-updates": {
+    "type": "ws",
+    "url": "wss://live.example.com/mcp/v1",
+    "headers": {
+      "Authorization": "Bearer ${WS_TOKEN}",
+      "X-Connection-Type": "persistent"
+    }
+  }
+}
