@@ -528,6 +528,7 @@ Working examples in `examples/`:
 - **`stdio-server.json`** - Local stdio MCP server
 - **`sse-server.json`** - Hosted SSE server with OAuth
 - **`http-server.json`** - REST API with token auth
+- **`ws-server.json`** - WebSocket server for real-time communication
 
 ### External Resources
 
