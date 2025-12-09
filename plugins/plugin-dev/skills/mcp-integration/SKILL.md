@@ -520,6 +520,7 @@ For detailed information, consult:
 - **`references/server-types.md`** - Deep dive on each server type
 - **`references/authentication.md`** - Authentication patterns and OAuth
 - **`references/tool-usage.md`** - Using MCP tools in commands and agents
+- **`references/discovery.md`** - Finding and evaluating MCP servers
 
 ### Example Configurations
 
