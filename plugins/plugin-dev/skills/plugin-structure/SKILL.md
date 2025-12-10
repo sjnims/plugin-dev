@@ -235,7 +235,7 @@ hooks/
 }
 ```
 
-**Available events**: PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification
+**Available events**: PreToolUse, PermissionRequest, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification
 
 **Usage**: Hooks execute automatically in response to Claude Code events
 
