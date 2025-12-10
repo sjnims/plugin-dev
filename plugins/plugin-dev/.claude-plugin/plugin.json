@@ -4,11 +4,10 @@
   "description": "Comprehensive toolkit for developing Claude Code plugins. Includes 7 expert skills covering hooks, MCP integration, commands, agents, and best practices. AI-assisted plugin creation and validation.",
   "author": {
     "name": "Daisy Hollman",
-    "email": "daisy@anthropic.com",
-    "url": "https://github.com/anthropics/claude-code/"
+    "email": "daisy@anthropic.com"
   },
-  "homepage": "https://github.com/anthropics/claude-code/",
-  "repository": "https://github.com/anthropics/claude-code/",
+  "homepage": "https://github.com/sjnims/plugin-dev",
+  "repository": "https://github.com/sjnims/plugin-dev",
   "license": "MIT",
   "keywords": [
     "development"

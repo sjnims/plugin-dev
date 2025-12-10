@@ -66,7 +66,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - ${CLAUDE_PLUGIN_ROOT} for portable paths
 
 **Resources:**
-- Core SKILL.md (2,125 words)
+- Core SKILL.md (~2,100 words)
 - 3 example hook scripts (validate-write, validate-bash, load-context)
 - 3 reference docs: patterns, migration, advanced techniques
 - 3 utility scripts: validate-hook-schema.sh, test-hook.sh, hook-linter.sh
@@ -86,9 +86,9 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Integration patterns and performance optimization
 
 **Resources:**
-- Core SKILL.md (1,663 words)
-- 3 example configurations (stdio, SSE, HTTP)
-- 3 reference docs: server-types (~1,370w), authentication (~1,280w), tool-usage (~1,540w)
+- Core SKILL.md (~1,770 words)
+- 4 example configurations (stdio, SSE, HTTP, WebSocket)
+- 4 reference docs: server-types, authentication, tool-usage, server-discovery
 
 **Use when:** Integrating external services, APIs, databases, or tools into your plugin.
 
@@ -105,7 +105,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Minimal, standard, and advanced plugin patterns
 
 **Resources:**
-- Core SKILL.md (1,654 words)
+- Core SKILL.md (~1,650 words)
 - 3 example structures (minimal, standard, advanced)
 - 2 reference docs: component-patterns, manifest-reference
 
@@ -125,7 +125,7 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Gitignore and lifecycle management
 
 **Resources:**
-- Core SKILL.md (1,623 words)
+- Core SKILL.md (~1,620 words)
 - 3 examples (read-settings hook, create-settings command, templates)
 - 2 reference docs: parsing-techniques, real-world-examples
 - 2 utility scripts: validate-settings.sh, parse-frontmatter.sh
@@ -145,9 +145,10 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Best practices for command development
 
 **Resources:**
-- Core SKILL.md (2,235 words)
-- Examples and reference documentation
-- Command organization patterns
+- Core SKILL.md (~2,240 words)
+- 2 examples: simple-commands, plugin-commands
+- 8 reference docs: frontmatter-reference, slashcommand-tool, interactive-commands, plugin-integration, advanced-workflows, testing-strategies, documentation-patterns, marketplace-considerations
+- 2 utility scripts: validate-command.sh, check-frontmatter.sh
 
 **Use when:** Creating slash commands, defining command arguments, or organizing plugin commands.
 
@@ -165,10 +166,10 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Complete production-ready agent examples
 
 **Resources:**
-- Core SKILL.md (1,896 words)
+- Core SKILL.md (~1,900 words)
 - 2 examples: agent-creation-prompt (AI-assisted workflow), complete-agent-examples (4 full agents)
-- 3 reference docs: agent-creation-system-prompt (from Claude Code), system-prompt-design (~1,400w), triggering-examples (~1,600w)
-- 1 utility script: validate-agent.sh
+- 3 reference docs: agent-creation-system-prompt (from Claude Code), system-prompt-design, triggering-examples
+- 3 utility scripts: validate-agent.sh, test-agent-trigger.sh, create-agent-skeleton.sh
 
 **Use when:** Creating autonomous agents, defining agent behavior, or implementing AI-assisted agent generation.
 
@@ -186,24 +187,24 @@ Use this workflow for structured, high-quality plugin development from concept t
 - Based on skill-creator methodology adapted for Claude Code plugins
 
 **Resources:**
-- Core SKILL.md (1,463 words)
-- References: skill-creator methodology, plugin-dev patterns
-- Examples: Study plugin-dev's own skills as templates
+- Core SKILL.md (~1,460 words)
+- 3 examples: minimal-skill, complete-skill, frontmatter-templates
+- 2 reference docs: skill-creator-original, skill-creation-workflow
 
 **Use when:** Creating new skills for plugins or improving existing skill quality.
 
 ## Installation
 
-Install from claude-code-marketplace:
+Install from this repository:
 
 ```bash
-/plugin install plugin-dev@claude-code-marketplace
+/plugin install sjnims/plugin-dev
 ```
 
 Or for development, use directly:
 
 ```bash
-cc --plugin-dir /path/to/plugin-dev
+claude --plugin-dir /path/to/plugin-dev/plugins/plugin-dev
 ```
 
 ## Quick Start
@@ -274,6 +275,7 @@ Each skill includes production-ready utilities (paths relative to `plugins/plugi
 # Agent development
 ./skills/agent-development/scripts/validate-agent.sh agents/my-agent.md
 ./skills/agent-development/scripts/test-agent-trigger.sh agents/my-agent.md
+./skills/agent-development/scripts/create-agent-skeleton.sh my-agent agents/
 
 # Command development
 ./skills/command-development/scripts/validate-command.sh commands/my-command.md
@@ -282,19 +284,23 @@ Each skill includes production-ready utilities (paths relative to `plugins/plugi
 # Hook development
 ./skills/hook-development/scripts/validate-hook-schema.sh hooks/hooks.json
 ./skills/hook-development/scripts/test-hook.sh my-hook.sh test-input.json
+./skills/hook-development/scripts/hook-linter.sh hooks/my-hook.sh
 
 # Plugin settings
 ./skills/plugin-settings/scripts/validate-settings.sh .claude/plugin.local.md
+./skills/plugin-settings/scripts/parse-frontmatter.sh .claude/plugin.local.md
 ```
 
 ### Working Examples
 
 Every skill provides working examples:
 - **Hook Development**: 3 complete hook scripts (bash, write validation, context loading)
-- **MCP Integration**: 3 server configurations (stdio, SSE, HTTP)
+- **MCP Integration**: 4 server configurations (stdio, SSE, HTTP, WebSocket)
 - **Plugin Structure**: 3 plugin layouts (minimal, standard, advanced)
 - **Plugin Settings**: 3 examples (read-settings hook, create-settings command, templates)
-- **Command Development**: 10 complete command examples (review, test, deploy, docs, etc.)
+- **Command Development**: 2 example collections with multiple command patterns
+- **Agent Development**: 2 examples with 4+ complete production-ready agents
+- **Skill Development**: 3 examples (minimal, complete, frontmatter templates)
 
 ## Documentation Standards
 
@@ -307,10 +313,10 @@ All skills follow consistent standards:
 
 ## Total Content
 
-- **Core Skills**: ~12,659 words across 7 SKILL.md files
+- **Core Skills**: ~12,750 words across 7 SKILL.md files
 - **Reference Docs**: ~10,000+ words of detailed guides
-- **Examples**: 12+ working examples (hook scripts, MCP configs, plugin layouts, settings files)
-- **Utilities**: 10 production-ready validation/testing/parsing scripts
+- **Examples**: 20+ working examples (hook scripts, MCP configs, plugin layouts, settings files, commands, agents)
+- **Utilities**: 12 production-ready validation/testing/parsing scripts
 
 ## Use Cases
 
@@ -382,24 +388,38 @@ All skills emphasize:
 
 ## Contributing
 
-This plugin is part of the claude-code-marketplace. To contribute improvements:
+To contribute improvements:
 
-1. Fork the marketplace repository
-2. Make changes to plugin-dev/
-3. Test locally with `cc --plugin-dir`
-4. Create PR following marketplace-publishing guidelines
+1. Fork this repository
+2. Make changes to `plugins/plugin-dev/`
+3. Test locally with `claude --plugin-dir plugins/plugin-dev`
+4. Create a PR with your changes
+
+## Attribution
+
+This plugin was originally developed by [Daisy Hollman](mailto:daisy@anthropic.com) at Anthropic. The original plugin can be found at:
+
+- [claude-code/plugins/plugin-dev](https://github.com/anthropics/claude-code/tree/main/plugins/plugin-dev)
+- [claude-plugins-official/plugins/plugin-dev](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev)
+
+This repository ([sjnims/plugin-dev](https://github.com/sjnims/plugin-dev)) is an expanded version of the original, with improvements made through successive review iterations using the plugin-dev skills themselves, validated against the official [Claude Code plugin documentation](https://docs.anthropic.com/en/docs/claude-code/plugins) and [skill documentation](https://docs.anthropic.com/en/docs/claude-code/skills).
+
+**Key improvements in this repository:**
+
+- Enhanced skill descriptions with stronger trigger phrases
+- Additional utility scripts (test-agent-trigger.sh, create-agent-skeleton.sh)
+- Expanded MCP integration documentation (server-discovery, WebSocket examples)
+- Comprehensive command development references
+- CI/CD workflows for validation and quality assurance
+- Improved cross-references between skills
 
 ## Version
 
 0.1.0 - Initial release with seven comprehensive skills and three validation agents
 
-## Author
-
-Daisy Hollman (<daisy@anthropic.com>)
-
 ## License
 
-MIT License - See repository for details
+MIT License - See [LICENSE.txt](LICENSE.txt) for details
 
 ---
 
