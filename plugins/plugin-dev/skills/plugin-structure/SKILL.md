@@ -200,13 +200,13 @@ description: When to use this skill
 Skill instructions and guidance...
 ```
 
-**Tool restrictions**: Skills can include `allowed-tools` in frontmatter to limit tool access:
+**Tool restrictions** (optional): Skills can include `allowed-tools` in frontmatter to limit tool access:
 
 ```yaml
 ---
 name: safe-reader
 description: Read-only file access skill
-allowed-tools: Read, Grep, Glob
+allowed-tools: Read, Grep, Glob  # Optional: restricts available tools
 ---
 ```
 
