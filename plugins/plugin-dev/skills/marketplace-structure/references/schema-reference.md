@@ -150,6 +150,8 @@ For GitLab, Bitbucket, or self-hosted git repositories:
 
 ## Complete Plugin Entry Example
 
+**Note:** The `${CLAUDE_PLUGIN_ROOT}` variable in the example below resolves to the plugin's absolute installation path. Use this variable for portable paths in hooks and MCP server configurations, ensuring paths work regardless of where the plugin is installed.
+
 Advanced plugin entry with all optional fields:
 
 ```json
