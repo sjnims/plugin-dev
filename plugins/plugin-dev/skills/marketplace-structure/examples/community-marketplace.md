@@ -126,7 +126,7 @@ A curated collection of high-quality Claude Code plugins.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for submission guidelines.
+See `CONTRIBUTING.md` for submission guidelines.
 
 ## License
 
