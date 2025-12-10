@@ -96,7 +96,8 @@ jobs:
             - [ ] YAML frontmatter exists with `name`, `description`, `allowed-tools` fields
             - [ ] `description` is 60 characters or fewer
             - [ ] `allowed-tools` follows these rules:
-              - MUST use `Bash(gh:*)` not unrestricted `Bash` (security requirement)
+              - For simple commands needing only specific CLI operations: prefer Bash prefix patterns like `Bash(gh pr:*)`, `Bash(npm run:*)` (uses prefix matching with `:*` wildcard)
+              - Unrestricted `Bash` is acceptable for workflow/scaffolding commands that legitimately need filesystem operations (mkdir, git init, directory creation) - verify the command's stated purpose justifies broader access
               - `Read` is always allowed (reading files is safe)
               - `Write` is allowed ONLY if the command creates/exports files (e.g., status export)
               - `AskUserQuestion` is always allowed (user interaction is safe)
