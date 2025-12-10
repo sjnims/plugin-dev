@@ -296,7 +296,7 @@ Before adding external plugins to your marketplace:
 
 1. Verify plugin source URL is accessible
 2. Check plugin directory contains required files
-3. For GitHub sources, ensure repository is public or you have access
+3. For GitHub sources, ensure repository is public or access is available
 4. Test plugin sources manually by cloning
 
 ### Validation Commands
