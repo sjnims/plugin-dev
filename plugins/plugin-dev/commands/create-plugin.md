@@ -316,30 +316,61 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
 **Goal**: Ensure plugin is well-documented and ready for distribution
 
 **Actions**:
+
 1. **Verify README completeness**:
    - Check README has: overview, features, installation, prerequisites, usage
    - For MCP plugins: Document required environment variables
    - For hook plugins: Explain hook activation
    - For settings: Provide configuration templates
 
-2. **Add marketplace entry** (if publishing):
-   - Show user how to add to marketplace.json
-   - Help draft marketplace description
-   - Suggest category and tags
+2. **Ask about marketplace publishing**:
+   - Ask user: "Would you like to publish this plugin to a marketplace?"
+   - If yes, proceed with marketplace integration
+   - If no, skip to step 4
 
-3. **Create summary**:
+3. **Marketplace integration** (if publishing):
+   - Load marketplace-structure skill using Skill tool
+   - Determine target marketplace:
+     - Ask: "Which marketplace? (existing marketplace path, create new, or skip)"
+   - If existing marketplace:
+     - Read marketplace.json
+     - Draft plugin entry:
+
+       ```json
+       {
+         "name": "[plugin-name]",
+         "source": "[relative-path-or-github]",
+         "description": "[from plugin.json]",
+         "version": "[from plugin.json]",
+         "category": "[suggest based on plugin type]"
+       }
+       ```
+
+     - Show diff of marketplace.json before/after addition
+     - Ask user to confirm entry
+     - Update marketplace.json with new plugin entry
+     - Update marketplace metadata.version (bump patch version)
+   - If create new marketplace:
+     - Suggest using `/plugin-dev:create-marketplace` command
+     - Or create minimal marketplace.json with this plugin as first entry
+   - Validate marketplace after update using plugin-validator agent
+
+4. **Create summary**:
    - Mark all todos complete
    - List what was created:
      - Plugin name and purpose
      - Components created (X skills, Y commands, Z agents, etc.)
      - Key files and their purposes
      - Total file count and structure
+   - If added to marketplace:
+     - Marketplace name and location
+     - Plugin entry details
    - Next steps:
      - Testing recommendations
-     - Publishing to marketplace (if desired)
+     - Publishing to marketplace (if not done)
      - Iteration based on usage
 
-4. **Suggest improvements** (optional):
+5. **Suggest improvements** (optional):
    - Additional components that could enhance plugin
    - Integration opportunities
    - Testing strategies
@@ -379,6 +410,7 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
 - **Phase 2**: plugin-structure
 - **Phase 5**: skill-development, command-development, agent-development, hook-development, mcp-integration, plugin-settings (as needed)
 - **Phase 6**: (agents will use skills automatically)
+- **Phase 8**: marketplace-structure (if publishing to marketplace)
 
 ### Quality Standards
 

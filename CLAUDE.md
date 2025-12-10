@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This repository is a **plugin marketplace** containing the **plugin-dev** plugin - a comprehensive toolkit for developing Claude Code plugins. It provides 7 specialized skills, 3 agents, and 1 guided workflow command for building high-quality plugins.
+This repository is a **plugin marketplace** containing the **plugin-dev** plugin - a comprehensive toolkit for developing Claude Code plugins. It provides 8 specialized skills, 3 agents, and 2 guided workflow commands for building high-quality plugins and marketplaces.
 
 ## Quick Reference
 
@@ -22,7 +22,7 @@ plugin-dev/                      # Marketplace root
 │       │   └── plugin.json      # Plugin manifest
 │       ├── commands/            # Slash commands
 │       ├── agents/              # Autonomous agents
-│       └── skills/              # 7 specialized skills
+│       └── skills/              # 8 specialized skills
 └── .github/workflows/           # CI/CD workflows
 ```
 
@@ -46,7 +46,7 @@ Each skill follows progressive disclosure:
 - `examples/` - Complete working examples and templates for copy-paste
 - `scripts/` - Utility scripts (executable without loading into context)
 
-**The 7 Skills:**
+**The 8 Skills:**
 
 1. `hook-development` - Event-driven automation with prompt-based hooks
 2. `mcp-integration` - Model Context Protocol server configuration
@@ -55,8 +55,9 @@ Each skill follows progressive disclosure:
 5. `command-development` - Slash commands with frontmatter
 6. `agent-development` - Autonomous agents with AI-assisted generation
 7. `skill-development` - Creating skills with progressive disclosure
+8. `marketplace-structure` - Plugin marketplace creation and distribution
 
-**Note:** `mcp-integration`, `plugin-structure`, and `skill-development` have no utility scripts—they provide documentation and examples only.
+**Note:** `mcp-integration`, `plugin-structure`, `skill-development`, and `marketplace-structure` have no utility scripts—they provide documentation and examples only.
 
 ### Writing Style
 
@@ -174,7 +175,9 @@ Hooks defined in `hooks/hooks.json`:
 
 ## Workflow
 
-The `/plugin-dev:create-plugin` command provides an 8-phase guided workflow:
+### `/plugin-dev:create-plugin`
+
+An 8-phase guided workflow for plugin creation:
 
 1. Discovery - Understand requirements
 2. Component Planning - Determine needed components
@@ -183,13 +186,26 @@ The `/plugin-dev:create-plugin` command provides an 8-phase guided workflow:
 5. Component Implementation - Build each component
 6. Validation - Run validators
 7. Testing - Verify in Claude Code
-8. Documentation - Finalize README
+8. Documentation - Finalize README and marketplace publishing
+
+### `/plugin-dev:create-marketplace`
+
+An 8-phase guided workflow for marketplace creation:
+
+1. Discovery - Understand marketplace purpose
+2. Plugin Planning - Determine plugins to include
+3. Metadata Design - Configure marketplace metadata
+4. Structure Creation - Create directory and manifest
+5. Plugin Entry Configuration - Configure each plugin entry
+6. Distribution Setup - Configure team settings or community guidelines
+7. Validation - Run marketplace validators
+8. Testing & Finalization - Test installation and finalize
 
 ## Validation Agents
 
 Use these agents proactively after creating components:
 
-- **plugin-validator**: Validates entire plugin structure
+- **plugin-validator**: Validates entire plugin structure and marketplace.json
 - **skill-reviewer**: Reviews skill quality and triggering
 - **agent-creator**: Generates new agents from descriptions
 
