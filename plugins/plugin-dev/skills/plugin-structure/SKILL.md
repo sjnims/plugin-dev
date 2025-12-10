@@ -224,14 +224,16 @@ hooks/
 
 ```json
 {
-  "PreToolUse": [{
-    "matcher": "Write|Edit",
-    "hooks": [{
-      "type": "command",
-      "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/validate.sh",
-      "timeout": 30
+  "hooks": {
+    "PreToolUse": [{
+      "matcher": "Write|Edit",
+      "hooks": [{
+        "type": "command",
+        "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/validate.sh",
+        "timeout": 30
+      }]
     }]
-  }]
+  }
 }
 ```
 

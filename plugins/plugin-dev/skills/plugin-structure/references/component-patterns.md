@@ -306,10 +306,12 @@ hooks/
 **hooks.json**:
 ```json
 {
-  "PreToolUse": [...],
-  "PostToolUse": [...],
-  "Stop": [...],
-  "SessionStart": [...]
+  "hooks": {
+    "PreToolUse": [...],
+    "PostToolUse": [...],
+    "Stop": [...],
+    "SessionStart": [...]
+  }
 }
 ```
 
