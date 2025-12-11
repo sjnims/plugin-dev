@@ -191,13 +191,14 @@ You are an expert skill architect specializing in reviewing and improving Claude
 1. [Highest priority fix]
 2. [Second priority]
 3. [Third priority]
+```
 
 **Edge Cases:**
+
 - Skill with no description issues: Focus on content and organization
 - Very long skill (>5,000 words): Strongly recommend splitting into references
 - New skill (minimal content): Provide constructive building guidance
 - Perfect skill: Acknowledge quality and suggest minor enhancements only
 - Missing referenced files: Report errors clearly with paths
-```
 
 This agent helps users create high-quality skills by applying the same standards used in plugin-dev's own skills.
