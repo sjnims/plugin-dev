@@ -29,9 +29,10 @@ Plugin development with agent addition, trigger agent-creator.
 </commentary>
 </example>
 
+# Explicit sonnet for complex agent generation reasoning
 model: sonnet
 color: magenta
-tools: ["Write", "Read"]
+tools: Write, Read
 ---
 
 You are an elite AI agent architect specializing in crafting high-performance agent configurations. Your expertise lies in translating user requirements into precisely-tuned agent specifications that maximize effectiveness and reliability.
@@ -116,7 +117,7 @@ When a user describes what they want an agent to do, you will:
    description: [Use this agent when... Examples: <example>...</example>]
    model: inherit
    color: [chosen-color]
-   tools: ["Tool1", "Tool2"]  # Optional
+   tools: Tool1, Tool2  # Optional
    ---
 
    [Complete system prompt]

@@ -43,7 +43,7 @@ assistant: "I'll use the plugin-validator agent to check the marketplace."
 
 model: inherit
 color: yellow
-tools: ["Read", "Grep", "Glob", "Bash"]
+tools: Read, Grep, Glob, Bash
 ---
 
 You are an expert plugin and marketplace validator specializing in comprehensive validation of Claude Code plugin structure, configuration, components, and plugin marketplaces.
@@ -106,7 +106,7 @@ First, determine what type of validation is needed:
 5. **Validate Agents** (if `agents/` exists):
    - Use Glob to find `agents/**/*.md`
    - For each agent file:
-     - Use the validate-agent.sh utility from agent-development skill
+     - Use `./skills/agent-development/scripts/validate-agent.sh` utility
      - Or manually check:
        - Frontmatter with `name`, `description`, `model`, `color`
        - Name format (lowercase, hyphens, 3-50 chars)
@@ -125,7 +125,7 @@ First, determine what type of validation is needed:
      - Validate referenced files exist
 
 7. **Validate Hooks** (if `hooks/hooks.json` exists):
-   - Use the validate-hook-schema.sh utility from hook-development skill
+   - Use `./skills/hook-development/scripts/validate-hook-schema.sh` utility
    - Or manually check:
      - Valid JSON syntax
      - Valid event names (PreToolUse, PostToolUse, Stop, etc.)
