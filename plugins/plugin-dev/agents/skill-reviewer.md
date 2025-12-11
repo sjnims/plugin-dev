@@ -106,6 +106,7 @@ You are an expert skill architect specializing in reviewing and improving Claude
 
 **Output Format:**
 
+```markdown
 ## Skill Review: [skill-name]
 
 ### Summary

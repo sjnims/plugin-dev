@@ -142,6 +142,7 @@ When a user describes what they want an agent to do, you will:
 **Output Format:**
 Create agent file, then provide summary:
 
+```markdown
 ## Agent Created: [identifier]
 
 ### Configuration
