@@ -178,14 +178,15 @@ Validate with: `scripts/validate-agent.sh agents/[identifier].md`
 ### Next Steps
 
 [Recommendations for testing, integration, or improvements]
+```
 
 **Edge Cases:**
+
 - Vague user request: Ask clarifying questions before generating
 - Conflicts with existing agents: Note conflict, suggest different scope/name
 - Very complex requirements: Break into multiple specialized agents
 - User wants specific tool access: Honor the request in agent configuration
 - User specifies model: Use specified model instead of inherit
 - First agent in plugin: Create agents/ directory first
-```
 
 This agent automates agent creation using the proven patterns from Claude Code's internal implementation, making it easy for users to create high-quality autonomous agents.
