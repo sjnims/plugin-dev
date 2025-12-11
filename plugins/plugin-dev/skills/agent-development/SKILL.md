@@ -113,7 +113,7 @@ assistant: "[How assistant should respond and use this agent]"
 
 model: inherit
 color: blue
-tools: ["Read", "Write", "Grep"]
+tools: Read, Write, Grep
 ---
 
 You are [agent role description]...
@@ -225,10 +225,10 @@ Visual identifier for agent in UI.
 
 Restrict agent to specific tools.
 
-**Format:** Array of tool names
+**Format:** Comma-separated tool names
 
 ```yaml
-tools: ["Read", "Write", "Grep", "Bash"]
+tools: Read, Write, Grep, Bash
 ```
 
 **Default:** If omitted, agent has access to all tools
@@ -236,10 +236,10 @@ tools: ["Read", "Write", "Grep", "Bash"]
 **Best practice:** Limit tools to minimum needed (principle of least privilege)
 
 **Common tool sets:**
-- Read-only analysis: `["Read", "Grep", "Glob"]`
-- Code generation: `["Read", "Write", "Grep"]`
-- Testing: `["Read", "Bash", "Grep"]`
-- Full access: Omit field or use `["*"]`
+- Read-only analysis: `Read, Grep, Glob`
+- Code generation: `Read, Write, Grep`
+- Testing: `Read, Bash, Grep`
+- Full access: Omit field entirely
 
 > **Important:** Agents use `tools` while Skills use `allowed-tools`. The field names differ between component types. For skill tool restrictions, see the `skill-development` skill.
 
@@ -438,7 +438,7 @@ Output: [What to provide]
 | description | Yes | Text + examples | Use when... <example>... |
 | model | Yes | inherit/sonnet/opus/haiku | inherit |
 | color | Yes | Color name | blue |
-| tools | No | Array of tool names | ["Read", "Grep"] |
+| tools | No | Comma-separated tool names | Read, Grep |
 
 > **Note:** Agents use `tools` to restrict tool access. Skills use `allowed-tools` for the same purpose. The field names differ between component types.
 
