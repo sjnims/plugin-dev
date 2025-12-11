@@ -1,7 +1,7 @@
 ---
-description: Guided end-to-end plugin creation workflow with component design, implementation, and validation
-argument-hint: Optional plugin description
-allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash", "TodoWrite", "AskUserQuestion", "Skill", "Task"]
+description: Create plugins with guided 8-phase workflow
+argument-hint: "[plugin-description]"
+allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash(mkdir:*)", "TodoWrite", "AskUserQuestion", "Skill", "Task"]
 ---
 
 # Plugin Creation Workflow
