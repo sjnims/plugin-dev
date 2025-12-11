@@ -41,7 +41,7 @@ User describes agent-like functionality need without explicitly requesting agent
 # Explicit sonnet for complex agent generation reasoning
 model: sonnet
 color: magenta
-tools: Write, Read
+tools: Write, Read, Glob
 skills: agent-development
 ---
 
