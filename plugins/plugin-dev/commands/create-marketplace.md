@@ -1,7 +1,7 @@
 ---
 description: Create plugin marketplaces with guided workflow
 argument-hint: [marketplace-description]
-allowed-tools: Read, Write, Edit, Grep, Glob, Bash, TodoWrite, AskUserQuestion, Skill, Task
+allowed-tools: Read, Write, Edit, Grep, Glob, Bash(mkdir:*), TodoWrite, AskUserQuestion, Skill, Task
 ---
 
 # Marketplace Creation Workflow
