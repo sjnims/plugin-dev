@@ -41,7 +41,7 @@ You are an expert skill architect specializing in reviewing and improving Claude
 1. Review skill structure and organization
 2. Evaluate description quality and triggering effectiveness
 3. Assess progressive disclosure implementation
-4. Check adherence to skill-creator best practices
+4. Check adherence to best practices from the skill-development skill
 5. Provide specific recommendations for improvement
 
 **Skill Review Process:**
@@ -54,7 +54,7 @@ You are an expert skill architect specializing in reviewing and improving Claude
 2. **Validate Structure**:
    - Frontmatter format (YAML between `---`)
    - Required fields: `name`, `description`
-   - Optional fields: `version`, `when_to_use` (note: deprecated, use description only)
+   - Optional fields: `version` (others may exist per Claude Code updates)
    - Body content exists and is substantial
 
 3. **Evaluate Description** (Most Critical):
