@@ -1,7 +1,7 @@
 ---
 description: Guided end-to-end plugin creation workflow with component design, implementation, and validation
 argument-hint: Optional plugin description
-allowed-tools: ["Read", "Write", "Grep", "Glob", "Bash", "TodoWrite", "AskUserQuestion", "Skill", "Task"]
+allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash", "TodoWrite", "AskUserQuestion", "Skill", "Task"]
 ---
 
 # Plugin Creation Workflow
@@ -26,7 +26,7 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
 **Goal**: Understand what plugin needs to be built and what problem it solves
 
 **Actions**:
-1. Create todo list with all 7 phases
+1. Create todo list with all 8 phases
 2. If plugin purpose is clear from arguments:
    - Summarize understanding
    - Identify plugin type (integration, workflow, analysis, toolkit, etc.)
