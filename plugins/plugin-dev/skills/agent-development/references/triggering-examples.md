@@ -4,17 +4,16 @@ Complete guide to writing effective `<example>` blocks in agent descriptions for
 
 ## Example Block Format
 
-The standard format for triggering examples:
+The standard format for triggering examples (aligned with official Claude Code documentation):
 
 ```markdown
 <example>
 Context: [Describe the situation - what led to this interaction]
 user: "[Exact user message or request]"
-assistant: "[How Claude should respond before triggering]"
+assistant: "[How Claude invokes the agent - 'I'll use the [agent-name] agent to [action]']"
 <commentary>
 [Explanation of why this agent should be triggered in this scenario]
 </commentary>
-assistant: "[How Claude triggers the agent - usually 'I'll use the [agent-name] agent...']"
 </example>
 ```
 
@@ -58,23 +57,15 @@ Example 2: user: "Can you check this implementation?"
 Example 3: user: "Look over my changes"
 ```
 
-### Assistant Response (Before Triggering)
+### Assistant Response
 
-**Purpose:** Show what Claude says before launching the agent
+**Purpose:** Show Claude invoking the agent
 
 **Good responses:**
 ```
-assistant: "I'll analyze your OAuth implementation."
-assistant: "Let me review that PR for you."
-assistant: "I'll investigate the test failure."
-```
-
-**Proactive example:**
-```
-assistant: "Great! Now let me review the code quality."
-<commentary>
-Code was just written, proactively trigger review agent.
-</commentary>
+assistant: "I'll use the code-reviewer agent to analyze your OAuth implementation."
+assistant: "I'll use the pr-analyzer agent to review that PR for you."
+assistant: "I'll use the test-analyzer agent to investigate the test failure."
 ```
 
 ### Commentary
@@ -104,22 +95,6 @@ test quality and coverage before continuing.
 </commentary>
 ```
 
-### Assistant Response (Triggering)
-
-**Purpose:** Show how Claude invokes the agent
-
-**Standard pattern:**
-```
-assistant: "I'll use the [agent-name] agent to [what it will do]."
-```
-
-**Examples:**
-```
-assistant: "I'll use the code-reviewer agent to analyze the changes."
-assistant: "Let me use the test-generator agent to create comprehensive tests."
-assistant: "I'll use the security-analyzer agent to check for vulnerabilities."
-```
-
 ## Example Types
 
 ### Type 1: Explicit Request
@@ -145,12 +120,11 @@ Agent triggers after relevant work without explicit request:
 <example>
 Context: User just implemented database queries
 user: "I've added the user search functionality"
-assistant: "Great! Let me review it for security."
+assistant: "I'll use the security-analyzer agent to review the database code for security issues."
 <commentary>
 Database code written. Proactively trigger security-analyzer to check
 for SQL injection and other database security issues.
 </commentary>
-assistant: "I'll use the security-analyzer agent to check the database code."
 </example>
 ```
 
@@ -162,12 +136,10 @@ User implies need without stating it directly:
 <example>
 Context: User mentions code is hard to understand
 user: "This code is confusing and hard to follow"
-assistant: "I can help improve the code clarity."
+assistant: "I'll use the code-simplifier agent to refactor for better readability."
 <commentary>
-User indicates complexity issues. Trigger code-simplifier agent to refactor
-for better readability.
+User indicates complexity issues. Trigger code-simplifier agent to improve clarity.
 </commentary>
-assistant: "I'll use the code-simplifier agent to suggest improvements."
 </example>
 ```
 
@@ -179,12 +151,11 @@ Agent triggers based on prior tool usage:
 <example>
 Context: User made multiple edits to test files
 user: "I've updated all the tests"
-assistant: "Great! Let me verify test quality."
+assistant: "I'll use the test-quality-analyzer agent to verify the tests follow best practices."
 <commentary>
 Multiple Edit tools used on test files. Proactively trigger test-quality-analyzer
 to ensure tests follow best practices.
 </commentary>
-assistant: "I'll use the test-quality-analyzer agent to review the tests."
 </example>
 ```
 
@@ -215,17 +186,19 @@ user: "Look over these changes"
 <example>
 Context: User explicitly requests review
 user: "Review my code for issues"
-[...]
+assistant: "I'll use the code-reviewer agent to analyze the code."
+<commentary>
+Explicit review request triggers the agent.
+</commentary>
 </example>
 
 <example>
 Context: After user writes code
 user: "I've implemented the feature"
-assistant: "Great! Now let me review it."
+assistant: "I'll use the code-reviewer agent to review the implementation."
 <commentary>
-Code written, proactively review.
+Code written, proactively review for quality and issues.
 </commentary>
-[...]
 </example>
 ```
 
@@ -267,9 +240,9 @@ assistant: "I'll use the code-reviewer agent."
 <example>
 Context: User just finished implementing authentication
 user: "Review my code"
-assistant: "I'll use the code-reviewer agent to analyze the auth implementation."
+assistant: "I'll use the code-reviewer agent to analyze the auth implementation for security and best practices."
 <commentary>
-Auth code written, review for security and best practices.
+Auth code written. Review for security and best practices.
 </commentary>
 </example>
 ```
@@ -350,11 +323,10 @@ More than 6 makes description too long. Focus on most important scenarios.
 <example>
 Context: User just implemented a new feature
 user: "I've added the user registration feature"
-assistant: "Great! Let me review the code quality."
+assistant: "I'll use the code-reviewer agent to analyze the implementation."
 <commentary>
 Code written, proactively trigger code-reviewer agent.
 </commentary>
-assistant: "I'll use the code-reviewer agent to analyze the implementation."
 </example>
 
 <example>
@@ -373,11 +345,10 @@ Explicit review request triggers the agent.
 <example>
 Context: User implemented functions without tests
 user: "I've added the data processing functions"
-assistant: "Great! Let me generate tests for these."
+assistant: "I'll use the test-generator agent to create comprehensive tests."
 <commentary>
 New code without tests, proactively trigger test-generator agent.
 </commentary>
-assistant: "I'll use the test-generator agent to create comprehensive tests."
 </example>
 
 <example>
@@ -396,11 +367,10 @@ Direct test generation request triggers the agent.
 <example>
 Context: User added new API endpoints
 user: "I've implemented the REST API endpoints"
-assistant: "I'll document these endpoints."
+assistant: "I'll use the api-docs-writer agent to create comprehensive documentation."
 <commentary>
 New API code, proactively generate documentation.
 </commentary>
-assistant: "I'll use the api-docs-writer agent to create comprehensive documentation."
 </example>
 
 <example>
@@ -419,11 +389,10 @@ Documentation request triggers the agent.
 <example>
 Context: User ready to commit changes
 user: "I'm ready to commit this code"
-assistant: "Let me validate it first."
+assistant: "I'll use the code-validator agent to check for issues before committing."
 <commentary>
 Before commit, proactively validate with validation-agent.
 </commentary>
-assistant: "I'll use the code-validator agent to check for issues."
 </example>
 
 <example>

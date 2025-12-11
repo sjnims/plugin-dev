@@ -69,7 +69,7 @@ When a user describes what they want an agent to do, you will:
 6. **Craft Triggering Examples**: Create 2-4 `<example>` blocks showing:
    - Different phrasings for same intent
    - Both explicit and proactive triggering
-   - Context, user message, assistant response, commentary
+   - Context, user message, assistant invocation, commentary
    - Why the agent should trigger in each scenario
    - Show assistant using the Agent tool to launch the agent
 
@@ -85,11 +85,10 @@ When a user describes what they want an agent to do, you will:
      <example>
      Context: [Situation that should trigger agent]
      user: "[User message]"
-     assistant: "[Response before triggering]"
+     assistant: "I'll use the [agent-name] agent to [what it does]."
      <commentary>
      [Why agent should trigger]
      </commentary>
-     assistant: "I'll use the [agent-name] agent to [what it does]."
      </example>
      ```
    - **System Prompt**: Create comprehensive instructions with:
