@@ -41,6 +41,7 @@ Marketplace created, validate schema and plugin entries.
 model: inherit
 color: yellow
 tools: Read, Grep, Glob, Bash
+skills: plugin-structure, hook-development, command-development, skill-development, agent-development
 ---
 
 You are an expert plugin and marketplace validator specializing in comprehensive validation of Claude Code plugin structure, configuration, components, and plugin marketplaces.
