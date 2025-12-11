@@ -1,7 +1,7 @@
 ---
 description: Create plugins with guided 8-phase workflow
 argument-hint: "[plugin-description]"
-allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash(mkdir:*)", "TodoWrite", "AskUserQuestion", "Skill", "Task"]
+allowed-tools: Read, Write, Edit, Grep, Glob, Bash(mkdir:*), Bash(git init:*), TodoWrite, AskUserQuestion, Skill, Task
 ---
 
 # Plugin Creation Workflow
@@ -199,7 +199,7 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
    - Agent-creator generates: identifier, whenToUse with examples, systemPrompt
    - Create agent markdown file with frontmatter and system prompt
    - Add appropriate model, color, and tools
-   - Validate with validate-agent.sh script
+   - Validate using plugin-validator agent
 
 ### For Hooks
 
@@ -209,7 +209,7 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
    - Prefer prompt-based hooks for complex logic
    - Use ${CLAUDE_PLUGIN_ROOT} for portability
    - Create hook scripts if needed (in examples/ not scripts/)
-   - Test with validate-hook-schema.sh and test-hook.sh utilities
+   - Validate using plugin-validator agent (handles hook schema validation)
 
 ### For MCP
 
@@ -258,11 +258,10 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
 4. **Test agent triggering** (if plugin has agents):
    - For each agent, verify <example> blocks are clear
    - Check triggering conditions are specific
-   - Run validate-agent.sh on agent files
+   - Verify via plugin-validator agent
 
 5. **Test hook configuration** (if plugin has hooks):
-   - Run validate-hook-schema.sh on hooks/hooks.json
-   - Test hook scripts with test-hook.sh
+   - Validate via plugin-validator agent (checks hook schema and scripts)
    - Verify ${CLAUDE_PLUGIN_ROOT} usage
 
 6. **Present findings**:
