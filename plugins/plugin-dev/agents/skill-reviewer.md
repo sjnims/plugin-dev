@@ -5,11 +5,10 @@ description: Use this agent when the user has created or modified a skill and ne
 <example>
 Context: User just created a new skill
 user: "I've created a PDF processing skill"
-assistant: "Great! Let me review the skill quality."
+assistant: "I'll use the skill-reviewer agent to review the skill quality."
 <commentary>
 Skill created, proactively trigger skill-reviewer to ensure it follows best practices.
 </commentary>
-assistant: "I'll use the skill-reviewer agent to review the skill."
 </example>
 
 <example>

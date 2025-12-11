@@ -5,11 +5,10 @@ description: Use this agent when the user asks to "validate my plugin", "check p
 <example>
 Context: User finished creating a new plugin
 user: "I've created my first plugin with commands and hooks"
-assistant: "Great! Let me validate the plugin structure."
+assistant: "I'll use the plugin-validator agent to validate the plugin structure."
 <commentary>
 Plugin created, proactively validate to catch issues early.
 </commentary>
-assistant: "I'll use the plugin-validator agent to check the plugin."
 </example>
 
 <example>
@@ -24,21 +23,19 @@ Explicit validation request triggers the agent.
 <example>
 Context: User modified plugin.json
 user: "I've updated the plugin manifest"
-assistant: "Let me validate the changes."
+assistant: "I'll use the plugin-validator agent to validate the manifest changes."
 <commentary>
 Manifest modified, validate to ensure correctness.
 </commentary>
-assistant: "I'll use the plugin-validator agent to check the manifest."
 </example>
 
 <example>
 Context: User created or modified a marketplace
 user: "I've set up a marketplace.json for my plugins"
-assistant: "Let me validate the marketplace structure."
+assistant: "I'll use the plugin-validator agent to validate the marketplace structure."
 <commentary>
 Marketplace created, validate schema and plugin entries.
 </commentary>
-assistant: "I'll use the plugin-validator agent to check the marketplace."
 </example>
 
 model: inherit
