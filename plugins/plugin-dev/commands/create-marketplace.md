@@ -157,9 +157,16 @@ Guide the user through creating a complete plugin marketplace from initial conce
    - Available plugins table (to be filled in Phase 5)
    - Contributing guidelines (if community)
 
-5. Initialize git repo if creating new directory
+5. Initialize git repo if creating new directory (only `git init` is available; additional git operations like staging and committing are left to the user after the workflow completes to respect their commit preferences)
 
 **Output**: Marketplace directory structure created
+
+**Post-workflow git operations** (user can run after completion):
+
+```bash
+git add .
+git commit -m "feat: initial marketplace structure"
+```
 
 ---
 
