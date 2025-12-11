@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner-terminal.svg" alt="plugin-dev - The complete toolkit for Claude Code plugins" width="100%">
+</p>
+
 # Plugin Development Toolkit
 
 [![CI](https://github.com/sjnims/plugin-dev/actions/workflows/component-validation.yml/badge.svg)](https://github.com/sjnims/plugin-dev/actions/workflows/component-validation.yml)

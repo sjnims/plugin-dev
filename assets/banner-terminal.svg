@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+  <title>plugin-dev - The complete development toolkit for Claude Code plugins</title>
+  <desc>A terminal-themed banner showing the plugin-dev toolkit for building Claude Code plugins, featuring commands, skills, agents, hooks, and MCP integration.</desc>
+
+  <defs>
+    <!-- Dark terminal background -->
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1d23"/>
+      <stop offset="100%" stop-color="#0d0f12"/>
+    </linearGradient>
+
+    <!-- Green terminal accent -->
+    <linearGradient id="termGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+
+    <!-- Cyan accent -->
+    <linearGradient id="termCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+
+    <!-- Glow effect -->
+    <filter id="termGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Scanline effect -->
+    <pattern id="scanlines" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="4" y2="0" stroke="#000000" stroke-width="1" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="300" fill="url(#termBg)"/>
+  <rect width="1200" height="300" fill="url(#scanlines)"/>
+
+  <!-- Terminal window frame -->
+  <g transform="translate(60, 40)">
+    <!-- Window chrome -->
+    <rect width="480" height="220" rx="10" fill="#1e222a" stroke="#2d3139" stroke-width="1"/>
+    
+    <!-- Title bar -->
+    <rect width="480" height="32" rx="10" fill="#252932"/>
+    <rect y="22" width="480" height="10" fill="#252932"/>
+    
+    <!-- Window controls -->
+    <circle cx="20" cy="16" r="6" fill="#ff5f57"/>
+    <circle cx="40" cy="16" r="6" fill="#febc2e"/>
+    <circle cx="60" cy="16" r="6" fill="#28c840"/>
+    
+    <!-- Terminal title -->
+    <text x="240" y="21" text-anchor="middle" fill="#6b7280" font-family="'SF Mono', monospace" font-size="12">plugin-dev — claude</text>
+
+    <!-- Terminal content area -->
+    <g transform="translate(20, 48)">
+      <!-- Line 1: Command prompt -->
+      <text y="20" fill="#22c55e" font-family="'SF Mono', 'Fira Code', monospace" font-size="14" filter="url(#termGlow)">
+        <tspan fill="#06b6d4">~/projects</tspan>
+        <tspan fill="#6b7280"> $ </tspan>
+        <tspan fill="#e2e8f0">claude</tspan>
+      </text>
+      
+      <!-- Line 2: Help command -->
+      <text y="48" fill="#e2e8f0" font-family="'SF Mono', 'Fira Code', monospace" font-size="14">
+        <tspan fill="#f59e0b">/</tspan><tspan fill="#e2e8f0">plugin-dev:create-plugin</tspan>
+      </text>
+      
+      <!-- Line 3: Output -->
+      <text y="76" fill="#6b7280" font-family="'SF Mono', 'Fira Code', monospace" font-size="13">
+        ✓ Plugin structure created
+      </text>
+      
+      <!-- Line 4: More output -->
+      <text y="100" fill="#6b7280" font-family="'SF Mono', 'Fira Code', monospace" font-size="13">
+        ✓ Commands initialized
+      </text>
+      
+      <!-- Line 5: Success -->
+      <text y="124" fill="#22c55e" font-family="'SF Mono', 'Fira Code', monospace" font-size="13" filter="url(#termGlow)">
+        ✓ Plugin ready!
+      </text>
+      
+      <!-- Cursor -->
+      <rect x="0" y="140" width="8" height="16" fill="#22c55e" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0;0.8" dur="1s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+  </g>
+
+  <!-- Right side - Title and info -->
+  <g transform="translate(600, 75)">
+    <!-- Main title with code styling -->
+    <text y="50" fill="#ffffff" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', monospace" font-size="52" font-weight="700" letter-spacing="-1">
+      <tspan fill="#06b6d4">&lt;</tspan>plugin-dev<tspan fill="#06b6d4">/&gt;</tspan>
+    </text>
+    
+    <!-- Subtitle -->
+    <text y="90" fill="#9ca3af" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400">
+      The complete development toolkit for Claude Code plugins
+    </text>
+
+    <!-- Feature tags -->
+    <g transform="translate(0, 110)">
+      <g transform="translate(0, 0)">
+        <rect width="80" height="26" rx="4" fill="#22c55e" opacity="0.15"/>
+        <text x="40" y="17" text-anchor="middle" fill="#22c55e" font-family="'SF Mono', monospace" font-size="11" font-weight="500">commands</text>
+      </g>
+      <g transform="translate(88, 0)">
+        <rect width="56" height="26" rx="4" fill="#8b5cf6" opacity="0.15"/>
+        <text x="28" y="17" text-anchor="middle" fill="#a78bfa" font-family="'SF Mono', monospace" font-size="11" font-weight="500">skills</text>
+      </g>
+      <g transform="translate(152, 0)">
+        <rect width="60" height="26" rx="4" fill="#f59e0b" opacity="0.15"/>
+        <text x="30" y="17" text-anchor="middle" fill="#fbbf24" font-family="'SF Mono', monospace" font-size="11" font-weight="500">agents</text>
+      </g>
+      <g transform="translate(220, 0)">
+        <rect width="56" height="26" rx="4" fill="#06b6d4" opacity="0.15"/>
+        <text x="28" y="17" text-anchor="middle" fill="#22d3ee" font-family="'SF Mono', monospace" font-size="11" font-weight="500">hooks</text>
+      </g>
+      <g transform="translate(284, 0)">
+        <rect width="48" height="26" rx="4" fill="#ec4899" opacity="0.15"/>
+        <text x="24" y="17" text-anchor="middle" fill="#f472b6" font-family="'SF Mono', monospace" font-size="11" font-weight="500">MCP</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="296" width="1200" height="4" fill="url(#termGreen)"/>
+</svg>
