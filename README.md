@@ -27,6 +27,7 @@ A comprehensive toolkit for developing Claude Code plugins with expert guidance 
 - [Contributing](#contributing)
 - [Getting Help](#getting-help)
 - [Attribution](#attribution)
+- [Changelog](#changelog)
 - [License](#license)
 
 ## Overview
@@ -336,6 +337,10 @@ This repository ([sjnims/plugin-dev](https://github.com/sjnims/plugin-dev)) is a
 - Comprehensive command development references
 - CI/CD workflows for validation and quality assurance
 - Improved cross-references between skills
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history and version details.
 
 ## License
 
