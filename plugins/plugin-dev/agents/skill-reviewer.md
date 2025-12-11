@@ -29,6 +29,15 @@ Skill description modified, review for triggering effectiveness.
 </commentary>
 </example>
 
+<example>
+Context: User is having trouble with skill triggering
+user: "My skill isn't being loaded when I ask about PDF processing"
+assistant: "I'll use the skill-reviewer agent to analyze why the skill isn't triggering."
+<commentary>
+Skill triggering issue reported, trigger skill-reviewer to diagnose description and trigger phrase quality.
+</commentary>
+</example>
+
 model: inherit
 color: cyan
 tools: Read, Grep, Glob
