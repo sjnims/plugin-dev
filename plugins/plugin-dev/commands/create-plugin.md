@@ -145,9 +145,16 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
    ```
 5. Create README.md template
 6. Create .gitignore if needed (for .claude/*.local.md, etc.)
-7. Initialize git repo if creating new directory
+7. Initialize git repo if creating new directory (only `git init` is available; additional git operations like staging and committing are left to the user after the workflow completes to respect their commit preferences)
 
 **Output**: Plugin directory structure created and ready for components
+
+**Post-workflow git operations** (user can run after completion):
+
+```bash
+git add .
+git commit -m "feat: initial plugin structure"
+```
 
 ---
 
