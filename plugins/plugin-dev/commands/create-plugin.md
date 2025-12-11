@@ -1,6 +1,6 @@
 ---
 description: Create plugins with guided 8-phase workflow
-argument-hint: "[plugin-description]"
+argument-hint: [plugin-description]
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash(mkdir:*), Bash(git init:*), TodoWrite, AskUserQuestion, Skill, Task
 ---
 

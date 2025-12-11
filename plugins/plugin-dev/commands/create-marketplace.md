@@ -1,7 +1,7 @@
 ---
-description: Guided end-to-end marketplace creation workflow with plugin organization and validation
-argument-hint: Optional marketplace description
-allowed-tools: ["Read", "Write", "Grep", "Glob", "Bash", "TodoWrite", "AskUserQuestion", "Skill", "Task"]
+description: Create plugin marketplaces with guided workflow
+argument-hint: [marketplace-description]
+allowed-tools: Read, Write, Edit, Grep, Glob, Bash, TodoWrite, AskUserQuestion, Skill, Task
 ---
 
 # Marketplace Creation Workflow
