@@ -29,6 +29,15 @@ Plugin development with agent addition, trigger agent-creator.
 </commentary>
 </example>
 
+<example>
+Context: User describes needing autonomous functionality while discussing plugin development
+user: "My plugin needs something to automatically review code after I write it"
+assistant: "I'll use the agent-creator agent to generate a code review agent for your plugin."
+<commentary>
+User describes agent-like functionality need without explicitly requesting agent creation, proactively trigger agent-creator.
+</commentary>
+</example>
+
 # Explicit sonnet for complex agent generation reasoning
 model: sonnet
 color: magenta
