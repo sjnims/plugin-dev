@@ -337,20 +337,20 @@ Ensure:
 
 Commands can execute bash commands inline to dynamically gather context before Claude processes the command. This is useful for including repository state, environment information, or project-specific context.
 
-### Syntax: The `!` Prefix
+### Syntax: The `[BANG]` Prefix
 
-In actual command files, use the `!` prefix before backticks for pre-execution:
+In actual command files, use `[BANG]` (exclamation mark) before backticks for pre-execution:
 
 ```markdown
-Current branch: !`git branch --show-current`
-Files changed: !`git diff --name-only`
-Environment: !`echo $NODE_ENV`
+Current branch: [BANG]`git branch --show-current`
+Files changed: [BANG]`git diff --name-only`
+Environment: [BANG]`echo $NODE_ENV`
 ```
 
 **How it works:**
 
-1. Before Claude sees the command, Claude Code executes `!`command`` blocks
-2. The bash output replaces the entire `!`command`` expression
+1. Before Claude sees the command, Claude Code executes `[BANG]`command`` blocks
+2. The bash output replaces the entire `[BANG]`command`` expression
 3. Claude receives the expanded prompt with actual values
 
 **Example expansion:**
@@ -358,7 +358,7 @@ Environment: !`echo $NODE_ENV`
 Command file contains:
 
 ```markdown
-Review the !`git diff --name-only | wc -l | tr -d ' '` changed files on branch !`git branch --show-current`.
+Review the [BANG]`git diff --name-only | wc -l | tr -d ' '` changed files on branch [BANG]`git branch --show-current`.
 ```
 
 Claude receives (after pre-execution):
@@ -367,15 +367,15 @@ Claude receives (after pre-execution):
 Review the 3 changed files on branch feature/add-auth.
 ```
 
-### Why Skill Examples Omit `!`
+### Why Skill Examples Omit `[BANG]`
 
-Examples in skill documentation use plain backticks without `!`:
+Examples in skill documentation use plain backticks without `[BANG]`:
 
 ```markdown
 Files changed: `git diff --name-only`
 ```
 
-This is intentional. When skill content loads into Claude's context, `!`command`` would actually execute. Skill examples show the conceptual pattern; add the `!` prefix when writing actual command files.
+This is intentional. When skill content loads into Claude's context, `[BANG]` followed by `[command name]` would actually execute. Skill examples show the conceptual pattern; add the `[BANG]` prefix when writing actual command files.
 
 **When to use:**
 

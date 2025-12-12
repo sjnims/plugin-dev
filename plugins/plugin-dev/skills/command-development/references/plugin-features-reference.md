@@ -94,7 +94,7 @@ description: Analyze using plugin script
 allowed-tools: Bash(node:*), Read
 ---
 
-Run analysis: !`node ${CLAUDE_PLUGIN_ROOT}/scripts/analyze.js`
+Run analysis: [BANG]`node ${CLAUDE_PLUGIN_ROOT}/scripts/analyze.js`
 
 Read template: @${CLAUDE_PLUGIN_ROOT}/templates/report.md
 ```
@@ -117,7 +117,7 @@ description: Run custom linter from plugin
 allowed-tools: Bash(node:*)
 ---
 
-Lint results: !`node ${CLAUDE_PLUGIN_ROOT}/bin/lint.js $1`
+Lint results: [BANG]`node ${CLAUDE_PLUGIN_ROOT}/bin/lint.js $1`
 
 Review the linting output and suggest fixes.
 ```
@@ -155,9 +155,9 @@ description: Complete plugin workflow
 allowed-tools: Bash(*), Read
 ---
 
-Step 1 - Prepare: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/prepare.sh $1`
+Step 1 - Prepare: [BANG]`bash ${CLAUDE_PLUGIN_ROOT}/scripts/prepare.sh $1`
 Step 2 - Config: @${CLAUDE_PLUGIN_ROOT}/config/$1.json
-Step 3 - Execute: !`${CLAUDE_PLUGIN_ROOT}/bin/execute $1`
+Step 3 - Execute: [BANG]`${CLAUDE_PLUGIN_ROOT}/bin/execute $1`
 
 Review results and report status.
 ```
@@ -180,7 +180,7 @@ Review results and report status.
    allowed-tools: Bash(test:*), Read
    ---
 
-   !`test -f ${CLAUDE_PLUGIN_ROOT}/config.json && echo "exists" || echo "missing"`
+   [BANG]`test -f ${CLAUDE_PLUGIN_ROOT}/config.json && echo "exists" || echo "missing"`
 
    If config exists, load it: @${CLAUDE_PLUGIN_ROOT}/config.json
    Otherwise, use defaults...
@@ -199,7 +199,7 @@ Review results and report status.
 
 4. **Combine with arguments:**
    ```markdown
-   Run: !`${CLAUDE_PLUGIN_ROOT}/bin/process.sh $1 $2`
+   Run: [BANG]`${CLAUDE_PLUGIN_ROOT}/bin/process.sh $1 $2`
    ```
 
 ### Troubleshooting
@@ -235,8 +235,8 @@ Load configuration: @${CLAUDE_PLUGIN_ROOT}/deploy-config.json
 
 Deploy to $1 environment using:
 1. Configuration settings above
-2. Current git branch: !`git branch --show-current`
-3. Application version: !`cat package.json | grep version`
+2. Current git branch: [BANG]`git branch --show-current`
+3. Application version: [BANG]`cat package.json | grep version`
 
 Execute deployment and monitor progress.
 ```
@@ -275,9 +275,9 @@ description: Complete build and test workflow
 allowed-tools: Bash(*)
 ---
 
-Build: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh`
-Validate: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh`
-Test: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/test.sh`
+Build: [BANG]`bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh`
+Validate: [BANG]`bash ${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh`
+Test: [BANG]`bash ${CLAUDE_PLUGIN_ROOT}/scripts/test.sh`
 
 Review all outputs and report:
 1. Build status
@@ -300,7 +300,7 @@ argument-hint: [dev|staging|prod]
 
 Environment config: @${CLAUDE_PLUGIN_ROOT}/config/$1.json
 
-Environment check: !`echo "Deploying to: $1"`
+Environment check: [BANG]`echo "Deploying to: $1"`
 
 Deploy application using $1 environment configuration.
 Verify deployment and run smoke tests.
@@ -321,7 +321,7 @@ allowed-tools: Bash(*), Read, Write
 Cache directory: ${CLAUDE_PLUGIN_ROOT}/cache/
 
 Analyze @$1 and save results to cache:
-!`mkdir -p ${CLAUDE_PLUGIN_ROOT}/cache && date > ${CLAUDE_PLUGIN_ROOT}/cache/last-run.txt`
+[BANG]`mkdir -p ${CLAUDE_PLUGIN_ROOT}/cache && date > ${CLAUDE_PLUGIN_ROOT}/cache/last-run.txt`
 
 Store analysis for future reference and comparison.
 ```
@@ -393,9 +393,9 @@ description: Commit with pre-commit validation
 allowed-tools: Bash(git:*)
 ---
 
-Stage changes: !`git add $1`
+Stage changes: [BANG]`git add $1`
 
-Commit changes: !`git commit -m "$2"`
+Commit changes: [BANG]`git commit -m "$2"`
 
 Note: This commit will trigger the plugin's pre-commit hook for validation.
 Review hook output for any issues.
@@ -421,7 +421,7 @@ File to review: @$1
 Execute comprehensive review:
 
 1. **Static Analysis** (via plugin scripts)
-   !`node ${CLAUDE_PLUGIN_ROOT}/scripts/lint.js $1`
+   [BANG]`node ${CLAUDE_PLUGIN_ROOT}/scripts/lint.js $1`
 
 2. **Deep Review** (via plugin agent)
    Launch the code-reviewer agent for detailed analysis.
@@ -449,7 +449,7 @@ description: Deploy to environment with validation
 argument-hint: [environment]
 ---
 
-Validate environment: !`echo "$1" | grep -E "^(dev|staging|prod)$" || echo "INVALID"`
+Validate environment: [BANG]`echo "$1" | grep -E "^(dev|staging|prod)$" || echo "INVALID"`
 
 $IF($1 in [dev, staging, prod],
   Deploy to $1 environment using validated configuration,
@@ -472,7 +472,7 @@ description: Process configuration file
 argument-hint: [config-file]
 ---
 
-Check file: !`test -f $1 && echo "EXISTS" || echo "MISSING"`
+Check file: [BANG]`test -f $1 && echo "EXISTS" || echo "MISSING"`
 
 Process configuration if file exists: @$1
 
@@ -492,7 +492,7 @@ description: Create deployment with version
 argument-hint: [environment] [version]
 ---
 
-Validate inputs: !`test -n "$1" -a -n "$2" && echo "OK" || echo "MISSING"`
+Validate inputs: [BANG]`test -n "$1" -a -n "$2" && echo "OK" || echo "MISSING"`
 
 $IF($1 AND $2,
   Deploy version $2 to $1 environment,
@@ -511,9 +511,9 @@ allowed-tools: Bash(test:*)
 ---
 
 Validate plugin setup:
-- Config exists: !`test -f ${CLAUDE_PLUGIN_ROOT}/config.json && echo "✓" || echo "✗"`
-- Scripts exist: !`test -d ${CLAUDE_PLUGIN_ROOT}/scripts && echo "✓" || echo "✗"`
-- Tools available: !`test -x ${CLAUDE_PLUGIN_ROOT}/bin/analyze && echo "✓" || echo "✗"`
+- Config exists: [BANG]`test -f ${CLAUDE_PLUGIN_ROOT}/config.json && echo "✓" || echo "✗"`
+- Scripts exist: [BANG]`test -d ${CLAUDE_PLUGIN_ROOT}/scripts && echo "✓" || echo "✗"`
+- Tools available: [BANG]`test -x ${CLAUDE_PLUGIN_ROOT}/bin/analyze && echo "✓" || echo "✗"`
 
 If all checks pass, proceed with analysis.
 Otherwise, report missing components and installation steps.
@@ -529,12 +529,12 @@ description: Build and validate output
 allowed-tools: Bash(*)
 ---
 
-Build: !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh`
+Build: [BANG]`bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh`
 
 Validate output:
-- Exit code: !`echo $?`
-- Output exists: !`test -d dist && echo "✓" || echo "✗"`
-- File count: !`find dist -type f | wc -l`
+- Exit code: [BANG]`echo $?`
+- Output exists: [BANG]`test -d dist && echo "✓" || echo "✗"`
+- File count: [BANG]`find dist -type f | wc -l`
 
 Report build status and any validation failures.
 ```
@@ -549,7 +549,7 @@ description: Process file with error handling
 argument-hint: [file-path]
 ---
 
-Try processing: !`node ${CLAUDE_PLUGIN_ROOT}/scripts/process.js $1 2>&1 || echo "ERROR: $?"`
+Try processing: [BANG]`node ${CLAUDE_PLUGIN_ROOT}/scripts/process.js $1 2>&1 || echo "ERROR: $?"`
 
 If processing succeeded:
 - Report results
