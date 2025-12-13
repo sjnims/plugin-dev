@@ -161,6 +161,14 @@ if [ ! -f "$TEST_INPUT" ]; then
   exit 1
 fi
 
+# Security: Validate test input path doesn't contain dangerous characters
+# This mirrors the HOOK_SCRIPT validation for defense-in-depth
+if [[ "$TEST_INPUT" =~ [\;\|\&\`\$\(\)\{\}\<\>] ]]; then
+  echo "❌ Error: Test input path contains invalid characters"
+  echo "   Path must not contain: ; | & \` \$ ( ) { } < >"
+  exit 1
+fi
+
 # Validate test input JSON
 if ! jq empty "$TEST_INPUT" 2>/dev/null; then
   echo "❌ Error: Test input is not valid JSON"
