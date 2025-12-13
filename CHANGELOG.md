@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2025-12-12
+
+### Added
+
+- **`/plugin-dev:start` command** - New primary entry point that guides users to choose between creating a plugin or marketplace (#145)
+  - Uses `disable-model-invocation: true` to route cleanly to specialized workflows
+  - Recommends plugin creation for most users
+
+### Fixed
+
+- Enable router invocation of workflow commands - workflow commands can now be invoked by other commands (#145)
+- Replace `!` with `[BANG]` placeholder in skill documentation to prevent shell interpretation issues (#142)
+
+### Documentation
+
+- Fix component counts and update documentation accuracy across README, CONTRIBUTING, CLAUDE.md, and marketplace.json
+
 ## [0.1.0] - 2025-12-11
 
 ### Added
@@ -109,5 +126,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Based on original plugin by Daisy Hollman at Anthropic
 - Expanded with enhanced skills, additional utilities, and CI/CD infrastructure
 
-[Unreleased]: https://github.com/sjnims/plugin-dev/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/sjnims/plugin-dev/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/sjnims/plugin-dev/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/sjnims/plugin-dev/releases/tag/v0.1.0
