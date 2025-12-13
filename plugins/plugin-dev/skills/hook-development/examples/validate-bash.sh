@@ -16,7 +16,21 @@ if [ -z "$command" ]; then
   exit 0
 fi
 
+# SECURITY: Check for command chaining/injection patterns FIRST
+# These checks must run before the "safe command" allowlist to prevent bypasses
+# like: echo $(rm -rf /), ls; malicious, pwd && evil, whoami | exfil
+# Note: This is not exhaustive - production hooks should consider additional
+# patterns like newlines (\n), null bytes (\x00), and shell-specific syntax
+# shellcheck disable=SC2016 # Single quotes intentional - matching literal $( and ` characters
+if [[ "$command" == *";"* ]] || [[ "$command" == *"|"* ]] ||
+   [[ "$command" == *'$('* ]] || [[ "$command" == *'`'* ]] ||
+   [[ "$command" == *"&&"* ]] || [[ "$command" == *"||"* ]]; then
+  echo '{"hookSpecificOutput": {"permissionDecision": "ask"}, "systemMessage": "Command chaining detected - requires review"}' >&2
+  exit 2
+fi
+
 # Check for obviously safe commands (quick approval)
+# IMPORTANT: This check is only safe because chaining patterns are caught above
 if [[ "$command" =~ ^(ls|pwd|echo|date|whoami)(\s|$) ]]; then
   exit 0
 fi

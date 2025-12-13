@@ -108,6 +108,13 @@ input=$(cat)
 file_path=$(echo "$input" | jq -r '.tool_input.file_path')
 
 # Check for path traversal
+# NOTE: This basic check catches literal ".." but has limitations:
+# - Does not detect URL-encoded traversal (%2e%2e)
+# - Cannot detect symlink-based traversal where resolved path escapes bounds
+# - Shell expansion could bypass in some contexts
+# For production hooks, consider using:
+#   resolved=$(realpath -m "$file_path" 2>/dev/null || echo "$file_path")
+# and comparing against an allowed directory prefix
 if [[ "$file_path" == *".."* ]]; then
   echo '{"decision": "deny", "reason": "Path traversal detected"}' >&2
   exit 2
