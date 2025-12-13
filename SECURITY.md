@@ -72,6 +72,34 @@ When a security vulnerability is confirmed:
 4. **Markdown Linting**: Run `markdownlint` before committing to catch potential issues
 5. **Test Locally**: Always test with `cc --plugin-dir plugins/plugin-dev` before pushing
 
+## Known Security Mitigations
+
+### Shell Pattern Escaping with [BANG] Placeholder
+
+**Issue**: [Claude Code #12781](https://github.com/anthropics/claude-code/issues/12781)
+
+Due to a Claude Code issue, inline bash execution patterns (exclamation mark followed by backtick) inside fenced code blocks can be executed when skills are loaded—even when they appear as documentation examples.
+
+**Mitigation**: This plugin uses a `[BANG]` placeholder instead of `!` in skill documentation that shows bash execution patterns.
+
+```markdown
+<!-- UNSAFE - may execute during skill load -->
+Current branch: !`git branch --show-current`
+
+<!-- SAFE - displays as documentation only -->
+Current branch: [BANG]`git branch --show-current`
+```
+
+**For maintainers**:
+
+- Do NOT "fix" `[BANG]` back to `!` - this is intentional
+- When adding new documentation with bash patterns, use `[BANG]`
+- Audit command: `grep -rn '!`' plugins/plugin-dev/skills/ --include='*.md' | grep -v '\[BANG\]'`
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for documentation guidelines
+- Reference: [command-development skill](plugins/plugin-dev/skills/command-development/SKILL.md) lines 340-378
+
+**History**: Fixed in PR #142 (v0.2.0)
+
 ## Scope
 
 This security policy applies to:
@@ -125,4 +153,4 @@ _No security issues have been reported yet._
 
 ---
 
-**Note:** _This security policy was last updated: December 7, 2025_
+**Note:** _This security policy was last updated: December 13, 2025_
