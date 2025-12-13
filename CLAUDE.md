@@ -8,7 +8,7 @@ This repository is a **plugin marketplace** containing the **plugin-dev** plugin
 
 ## Quick Reference
 
-**Current Version**: v0.2.0 (see [CHANGELOG.md](CHANGELOG.md) for release history)
+**Current Version**: v0.2.1 (see [CHANGELOG.md](CHANGELOG.md) for release history)
 
 ### Quick Links
 
