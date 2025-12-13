@@ -70,7 +70,7 @@ if [ -z "$DESCRIPTION" ]; then
 fi
 
 # Count example blocks
-EXAMPLE_COUNT=$(echo "$DESCRIPTION" | grep -c '<example>' || echo 0)
+EXAMPLE_COUNT=$(echo "$DESCRIPTION" | grep -c '<example>' 2>/dev/null || echo 0)
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "📊 EXAMPLE ANALYSIS"
