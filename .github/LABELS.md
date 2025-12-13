@@ -5,7 +5,6 @@ This directory contains the canonical label configuration for the repository.
 ## Files
 
 - **labels.yml**: Source of truth for all repository labels
-- **sync-labels.sh**: Script for manual label syncing (helper/documentation)
 - **workflows/sync-labels.yml**: Automated workflow that syncs label definitions on push to main
 - **workflows/semantic-labeler.yml**: Claude-powered workflow that applies labels to issues and PRs
 
@@ -163,7 +162,7 @@ Labels are **automatically synced** when changes to `labels.yml` are pushed to m
 
 - **PR preview**: When you open a PR that modifies `labels.yml`, the workflow runs in dry-run mode to show what changes would be applied.
 - **Automatic sync**: When the PR is merged to main, changes are applied automatically.
-- **Manual sync**: Use the GitHub CLI (see sync-labels.sh for guidance) or trigger the workflow manually via GitHub Actions > Sync Labels > Run workflow.
+- **Manual sync**: Use the GitHub CLI (see examples below) or trigger the workflow manually via GitHub Actions > Sync Labels > Run workflow.
 
 ## Label Naming Convention
 
@@ -178,7 +177,7 @@ Labels are **automatically synced** when changes to `labels.yml` are pushed to m
 1. **labels.yml is the source of truth** - always update it when changing labels
 2. **Use consistent colors** within categories (e.g., component labels use cool colors: blues, purples, and teals)
 3. **Keep descriptions clear** - they appear in the label picker
-4. **Don't create too many labels** - aim for 25-35 total
+4. **Don't create too many labels** - keep the set manageable (currently ~40)
 5. **Archive unused labels** rather than delete (consider dependencies)
 
 ## Label Count

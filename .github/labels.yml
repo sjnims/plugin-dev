@@ -92,12 +92,12 @@
   description: "Blocked by dependencies"
 
 - name: "status:in-progress"
-  color: "c5def5"
+  color: "90caf9"
   description: "Work in progress"
 
 - name: "status:needs-repro"
   color: "f9c4f4"
-  description: "Cannot reproduce"
+  description: "Needs reproduction steps"
 
 - name: "status:needs-review"
   color: "fff3b3"
