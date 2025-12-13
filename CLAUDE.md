@@ -421,8 +421,9 @@ rg 'Current Version.*v[0-9]' CLAUDE.md
   2. Organize into sections: Added, Changed, Fixed, Security, Performance, Documentation
   3. Group related changes and reference PR numbers
   4. Add version comparison links at bottom of file
-- `README.md` - Update version references if applicable
 - Any other relevant documentation
+
+> **Note**: The README.md version badge updates automatically from GitHub releases.
 
 #### 4. Test and Validate
 
