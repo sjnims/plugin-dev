@@ -141,13 +141,31 @@ if [ ! -f "$HOOK_SCRIPT" ]; then
   exit 1
 fi
 
+# Security: Validate hook script path doesn't contain dangerous characters
+# This prevents potential command injection through maliciously crafted paths
+if [[ "$HOOK_SCRIPT" =~ [\;\|\&\`\$\(\)\{\}\<\>] ]]; then
+  echo "❌ Error: Hook script path contains invalid characters"
+  echo "   Path must not contain: ; | & \` \$ ( ) { } < >"
+  exit 1
+fi
+
+# Track if we need to invoke with bash explicitly
+HOOK_IS_EXECUTABLE=true
 if [ ! -x "$HOOK_SCRIPT" ]; then
   echo "⚠️  Warning: Hook script is not executable. Attempting to run with bash..."
-  HOOK_SCRIPT="bash $HOOK_SCRIPT"
+  HOOK_IS_EXECUTABLE=false
 fi
 
 if [ ! -f "$TEST_INPUT" ]; then
   echo "❌ Error: Test input not found: $TEST_INPUT"
+  exit 1
+fi
+
+# Security: Validate test input path doesn't contain dangerous characters
+# This mirrors the HOOK_SCRIPT validation for defense-in-depth
+if [[ "$TEST_INPUT" =~ [\;\|\&\`\$\(\)\{\}\<\>] ]]; then
+  echo "❌ Error: Test input path contains invalid characters"
+  echo "   Path must not contain: ; | & \` \$ ( ) { } < >"
   exit 1
 fi
 
@@ -187,7 +205,13 @@ echo ""
 start_time=$(date +%s)
 
 set +e
-output=$(timeout "$TIMEOUT" bash -c "cat '$TEST_INPUT' | $HOOK_SCRIPT" 2>&1)
+# Use proper argument passing to prevent command injection
+# Arguments are passed safely via bash -c's positional parameters
+if [ "$HOOK_IS_EXECUTABLE" = true ]; then
+  output=$(timeout "$TIMEOUT" bash -c 'cat "$1" | "$2"' -- "$TEST_INPUT" "$HOOK_SCRIPT" 2>&1)
+else
+  output=$(timeout "$TIMEOUT" bash -c 'cat "$1" | bash "$2"' -- "$TEST_INPUT" "$HOOK_SCRIPT" 2>&1)
+fi
 exit_code=$?
 set -e
 
