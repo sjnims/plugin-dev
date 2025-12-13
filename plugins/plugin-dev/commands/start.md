@@ -47,11 +47,12 @@ I'll help you get started. First, let me explain your options:
 
 ## Step 3: Ask User Question
 
-Use the AskUserQuestion tool to ask the user which path they want to take.
+Use the AskUserQuestion tool with these parameters:
 
-**Header**: "Create"
-**Question**: "What would you like to create?"
-**multiSelect**: false
+- **header**: "Create"
+- **question**: "What would you like to create?"
+- **multiSelect**: false
+- **options**: (defined below)
 
 **Options**:
 
