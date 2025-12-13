@@ -42,9 +42,31 @@ Each component follows progressive disclosure: lean core documentation with deta
 
 ## Prerequisites
 
+### Required
+
 - [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and configured
-- Bash shell (for utility scripts)
 - Git (for version control and marketplace publishing)
+
+### For Utility Scripts
+
+The plugin includes utility scripts for validation and testing. These require:
+
+| Tool | Version | Purpose |
+|------|---------|---------|
+| bash | 3.2+ | Shell scripting (macOS default works) |
+| jq | 1.6+ | JSON parsing and validation |
+| grep | - | Pattern matching (with `-E` support) |
+| sed | - | Stream editing (GNU or BSD) |
+
+**Check your environment:**
+
+```bash
+bash --version | head -1
+jq --version
+grep --version 2>&1 | head -1
+```
+
+> **Note**: `jq` may need to be installed. macOS: `brew install jq`, Linux: `apt install jq`
 
 ## Installation
 

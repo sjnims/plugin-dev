@@ -695,6 +695,8 @@ Working examples in `examples/`:
 
 ### Utility Scripts
 
+> **Prerequisites**: These scripts require `jq` for JSON validation. See the [main README](../../../../README.md#for-utility-scripts) for setup.
+
 Development tools in `scripts/`:
 
 - **`validate-hook-schema.sh`** - Validate hooks.json structure and syntax
