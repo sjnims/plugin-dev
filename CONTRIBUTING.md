@@ -150,6 +150,23 @@ markdownlint '**/*.md' --ignore node_modules --fix
 - No line length limits
 - Allowed HTML: `<p>`, `<img>`, `<example>`, `<commentary>`
 
+### Shell Pattern Escaping
+
+When documenting bash execution patterns in skill files, use `[BANG]` instead of `!` to prevent unintended execution during skill loading ([Claude Code #12781](https://github.com/anthropics/claude-code/issues/12781)).
+
+```markdown
+<!-- In skill documentation (SKILL.md, references/, examples/) -->
+Current branch: [BANG]`git branch --show-current`
+
+<!-- The [BANG] placeholder prevents execution while loading -->
+```
+
+**Important**:
+
+- This applies to skill files that get loaded into context
+- Command files (`.claude/commands/*.md`) use actual `!` syntax
+- See [SECURITY.md](SECURITY.md#shell-pattern-escaping-with-bang-placeholder) for full details
+
 ## Component-Specific Guidelines
 
 ### Commands (`/plugin-dev:*`)

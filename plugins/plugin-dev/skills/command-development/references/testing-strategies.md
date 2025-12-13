@@ -676,8 +676,9 @@ echo "Test: \$1 and \$2" > .claude/commands/test-args.md
 # Check allowed-tools
 grep "allowed-tools" .claude/commands/my-command.md
 
-# Verify command syntax
-grep '!`' .claude/commands/my-command.md
+# Verify command has bash execution syntax (! followed by backtick)
+# Note: Command files use actual ! syntax, not [BANG] placeholder
+grep -E '!\x60' .claude/commands/my-command.md
 
 # Test command manually
 date
