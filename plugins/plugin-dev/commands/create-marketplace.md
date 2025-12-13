@@ -3,7 +3,6 @@ description: Create plugin marketplaces with guided workflow
 argument-hint: [marketplace-description]
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash(mkdir:*), Bash(git init:*), TodoWrite, AskUserQuestion, Skill, Task
 model: sonnet
-disable-model-invocation: true
 ---
 
 # Marketplace Creation Workflow

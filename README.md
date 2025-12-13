@@ -63,7 +63,17 @@ claude --plugin-dir /path/to/plugin-dev/plugins/plugin-dev
 
 ## Quick Start
 
-### Creating Your First Plugin
+**New to plugin development?** Start with the guided entry point:
+
+```bash
+/plugin-dev:start
+```
+
+This will help you choose between creating a **plugin** (most users) or a **marketplace** (for distributing multiple plugins).
+
+### Learning by Asking
+
+You can also learn progressively by asking questions. Skills load automatically:
 
 1. **Plan your plugin structure:**
    - Ask: "What's the best directory structure for a plugin with commands and MCP integration?"
@@ -76,12 +86,6 @@ claude --plugin-dir /path/to/plugin-dev/plugins/plugin-dev
 3. **Implement hooks (if needed):**
    - Ask: "Create a PreToolUse hook that validates file writes"
    - The hook-development skill gives working examples and utilities
-
-Or use the guided workflow:
-
-```bash
-/plugin-dev:create-plugin A plugin for managing database migrations
-```
 
 ## Skills
 
@@ -110,6 +114,10 @@ Each skill provides:
 For detailed documentation on any skill, ask Claude Code or browse the `skills/` directory.
 
 ## Guided Workflows
+
+### /plugin-dev:start
+
+A guided entry point to help you choose between creating a **plugin** (most users) or a **marketplace** (for distributing multiple plugins).
 
 ### /plugin-dev:create-plugin
 

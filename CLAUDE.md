@@ -178,6 +178,15 @@ Hooks defined in `hooks/hooks.json`:
 
 ## Workflow
 
+### `/plugin-dev:start`
+
+The primary entry point for plugin development. Presents users with a choice:
+
+1. **Create a plugin** (recommended for most users) - Routes to `/plugin-dev:create-plugin`
+2. **Create a marketplace** - Routes to `/plugin-dev:create-marketplace`
+
+Use this command when starting fresh or when unsure which workflow to use.
+
 ### `/plugin-dev:create-plugin`
 
 An 8-phase guided workflow for plugin creation:
