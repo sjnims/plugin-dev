@@ -56,7 +56,8 @@ if [[ -n "$MAX_SIZE" ]] && [[ "$MAX_SIZE" =~ ^[0-9]+$ ]]; then
   content_size=${#content}
 
   if [[ $content_size -gt $MAX_SIZE ]]; then
-    echo '{"hookSpecificOutput": {"permissionDecision": "deny"}, "systemMessage": "File exceeds configured max size: '"$MAX_SIZE"' bytes"}' >&2
+    jq -n --arg size "$MAX_SIZE" \
+      '{"hookSpecificOutput": {"permissionDecision": "deny"}, "systemMessage": "File exceeds configured max size: \($size) bytes"}' >&2
     exit 2
   fi
 fi
