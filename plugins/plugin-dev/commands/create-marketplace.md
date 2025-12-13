@@ -19,6 +19,8 @@ Guide the user through creating a complete plugin marketplace from initial conce
 
 **Initial request:** $ARGUMENTS
 
+**Security note:** This workflow has broad file system access to create marketplace structures. It can write files and create directories within your permission scope. Review the target directory before starting, and see CLAUDE.md "Workflow Command Security" for details.
+
 ---
 
 ## Phase 1: Discovery
