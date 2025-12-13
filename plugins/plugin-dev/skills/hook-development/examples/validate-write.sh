@@ -17,6 +17,13 @@ if [ -z "$file_path" ]; then
 fi
 
 # Check for path traversal
+# NOTE: This basic check catches literal ".." but has limitations:
+# - Does not detect URL-encoded traversal (%2e%2e)
+# - Cannot detect symlink-based traversal where resolved path escapes bounds
+# - Shell expansion could bypass in some contexts
+# For production hooks, consider using:
+#   resolved=$(realpath -m "$file_path" 2>/dev/null || echo "$file_path")
+# and comparing against an allowed directory prefix
 if [[ "$file_path" == *".."* ]]; then
   jq -n --arg path "$file_path" \
     '{"hookSpecificOutput": {"permissionDecision": "deny"}, "systemMessage": "Path traversal detected in: \($path)"}' >&2
