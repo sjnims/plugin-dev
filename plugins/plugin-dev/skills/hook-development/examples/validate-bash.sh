@@ -20,7 +20,7 @@ fi
 # These checks must run before the "safe command" allowlist to prevent bypasses
 # like: echo $(rm -rf /), ls; malicious, pwd && evil, whoami | exfil
 # Note: This is not exhaustive - production hooks should consider additional
-# patterns like newlines, null bytes, and shell-specific syntax
+# patterns like newlines (\n), null bytes (\x00), and shell-specific syntax
 # shellcheck disable=SC2016 # Single quotes intentional - matching literal $( and ` characters
 if [[ "$command" == *";"* ]] || [[ "$command" == *"|"* ]] ||
    [[ "$command" == *'$('* ]] || [[ "$command" == *'`'* ]] ||
