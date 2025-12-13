@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "Unofficial plugin-dev plugin marketplace for plugin-dev Claude Code plugin - the plugin itself was initially created by Daisy Hollman at Anthropic.",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "plugin-dev",
       "description": "Comprehensive toolkit for developing Claude Code plugins. Includes 8 expert skills covering hooks, MCP integration, commands, agents, marketplaces, and best practices. AI-assisted plugin creation and validation.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "Daisy Hollman",
         "url": "https://github.com/anthropics/claude-code/",
