@@ -7,6 +7,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-12-13
+
+### Security
+
+- **Harden validation scripts against bypass attacks** - Improved input validation and escaping in hook validation scripts (#164)
+- **Prevent command injection in test-hook.sh** - Fixed potential command injection vulnerability (#148)
+- **Use jq for safe JSON output** - Replaced echo with jq for proper JSON escaping in example hooks (#149)
+- **Document security scope and trust model** - Added comprehensive security documentation for workflow commands (#165)
+
+### Fixed
+
+- **Workflow reliability improvements** - Enhanced workflow security, reliability, and documentation
+- **Remove deprecated mode parameter** - Fixed claude-pr-review workflow by removing deprecated mode parameter (#171)
+- **Shellcheck SC1087 errors** - Resolved array expansion errors in validate-hook-schema.sh (#168)
+- **Replace unofficial `cc` alias** - Updated to use official `claude` CLI command
+- **Issue and PR template improvements** - Fixed UX issues, restored spacing, removed unsupported fields
+- **Labels configuration** - Corrected labels.yml and LABELS.md issues
+- **Dependabot configuration** - Improved grouping and accountability settings
+- **Suppress grep stderr** - Fixed noisy output in test-agent-trigger.sh (#150)
+
+### Changed
+
+- **Use ERE instead of BRE** - Refactored grep patterns to use Extended Regular Expressions for clarity (#159)
+
+### Documentation
+
+- **Comprehensive documentation improvements** - Major updates across README, CLAUDE.md, and skill documentation
+- **Discussion templates** - Improved UX with plugin-specific fields
+- **Prerequisites section** - Added utility script dependency documentation (#157)
+- **Shellcheck guidance** - Added linting instructions to CONTRIBUTING.md (#160)
+- **Secure mktemp pattern** - Documented secure temporary file handling (#158)
+- **[BANG] workaround** - Documented security workaround for Claude Code #12781 (#156)
+
+### Dependencies
+
+- Bump anthropics/claude-code-action (#170)
+- Bump EndBug/label-sync (#169)
+- Update GitHub Actions to latest versions
+- Remove deprecated sync-labels.sh script
+
 ## [0.2.0] - 2025-12-12
 
 ### Added
@@ -126,6 +166,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Based on original plugin by Daisy Hollman at Anthropic
 - Expanded with enhanced skills, additional utilities, and CI/CD infrastructure
 
-[Unreleased]: https://github.com/sjnims/plugin-dev/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/sjnims/plugin-dev/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/sjnims/plugin-dev/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/sjnims/plugin-dev/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/sjnims/plugin-dev/releases/tag/v0.1.0
