@@ -167,6 +167,38 @@ Current branch: [BANG]`git branch --show-current`
 - Command files (`.claude/commands/*.md`) use actual `!` syntax
 - See [SECURITY.md](SECURITY.md#shell-pattern-escaping-with-bang-placeholder) for full details
 
+### Shell Script Quality
+
+All shell scripts should pass [shellcheck](https://www.shellcheck.net/) validation:
+
+```bash
+# Check all plugin scripts
+shellcheck plugins/plugin-dev/skills/*/scripts/*.sh
+
+# Check a specific script
+shellcheck plugins/plugin-dev/skills/hook-development/scripts/test-hook.sh
+```
+
+#### Handling Intentional Patterns
+
+If a pattern intentionally triggers a shellcheck warning, add a directive comment:
+
+```bash
+# shellcheck disable=SC2086  # Word splitting intended for arguments
+command $unquoted_var
+```
+
+Always include a comment explaining why the directive is needed.
+
+#### Common Issues
+
+| Warning | Typical Fix |
+|---------|-------------|
+| SC2086 | Quote variables: `"$var"` |
+| SC2046 | Quote command substitution: `"$(cmd)"` |
+| SC2034 | Remove unused variables or export them |
+| SC2155 | Separate declaration and assignment: `local var; var=$(cmd)` |
+
 ## Component-Specific Guidelines
 
 ### Commands (`/plugin-dev:*`)
