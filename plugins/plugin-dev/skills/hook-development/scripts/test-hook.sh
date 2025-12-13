@@ -169,8 +169,8 @@ if [[ "$TEST_INPUT" =~ [\;\|\&\`\$\(\)\{\}\<\>] ]]; then
   exit 1
 fi
 
-# Validate test input JSON
-if ! jq empty "$TEST_INPUT" 2>/dev/null; then
+# Validate test input JSON (with timeout for defensive consistency)
+if ! timeout 5 jq empty "$TEST_INPUT" 2>/dev/null; then
   echo "❌ Error: Test input is not valid JSON"
   exit 1
 fi

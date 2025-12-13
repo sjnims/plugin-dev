@@ -1,6 +1,10 @@
 #!/bin/bash
 # Frontmatter Parser Utility
 # Extracts YAML frontmatter from .local.md files
+#
+# Note: This script assumes the settings file is stable (not being written to).
+# Settings changes require a Claude Code restart to take effect, so there's no
+# need for file locking in normal usage.
 
 set -euo pipefail
 

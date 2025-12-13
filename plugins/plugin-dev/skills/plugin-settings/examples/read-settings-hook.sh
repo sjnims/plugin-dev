@@ -1,11 +1,13 @@
 #!/bin/bash
-# Example hook that reads plugin settings from .claude/my-plugin.local.md
+# Example hook that reads plugin settings from .claude/<plugin>.local.md
 # Demonstrates the complete pattern for settings-driven hook behavior
 
 set -euo pipefail
 
-# Define settings file path
-SETTINGS_FILE=".claude/my-plugin.local.md"
+# Define settings file path using environment variable with default
+# This allows the plugin name to be configured externally if needed
+PLUGIN_NAME="${PLUGIN_NAME:-my-plugin}"
+SETTINGS_FILE=".claude/${PLUGIN_NAME}.local.md"
 
 # Quick exit if settings file doesn't exist
 if [[ ! -f "$SETTINGS_FILE" ]]; then

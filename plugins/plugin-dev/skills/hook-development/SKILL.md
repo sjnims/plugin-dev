@@ -689,6 +689,8 @@ For detailed patterns and advanced techniques, consult:
 
 Working examples in `examples/`:
 
+> **Note:** After copying example scripts, make them executable: `chmod +x script.sh`
+
 - **`validate-write.sh`** - File write validation example
 - **`validate-bash.sh`** - Bash command validation example
 - **`load-context.sh`** - SessionStart context loading example
