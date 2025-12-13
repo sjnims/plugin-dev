@@ -200,8 +200,8 @@ NEXT_ITERATION=$((ITERATION + 1))
 # Extract prompt from markdown body
 PROMPT_TEXT=$(awk '/^---$/{i++; next} i>=2' "$RALPH_STATE_FILE")
 
-# Update iteration counter
-TEMP_FILE="${RALPH_STATE_FILE}.tmp.$$"
+# Update iteration counter (secure temp file)
+TEMP_FILE=$(mktemp) || exit 1
 sed "s/^iteration: .*/iteration: $NEXT_ITERATION/" "$RALPH_STATE_FILE" > "$TEMP_FILE"
 mv "$TEMP_FILE" "$RALPH_STATE_FILE"
 
@@ -292,12 +292,12 @@ enabled: true
 Both use temp file + atomic move:
 
 ```bash
-TEMP_FILE="${FILE}.tmp.$$"
+TEMP_FILE=$(mktemp) || exit 1
 sed "s/^field: .*/field: $NEW_VALUE/" "$FILE" > "$TEMP_FILE"
 mv "$TEMP_FILE" "$FILE"
 ```
 
-**Why:** Prevents corruption if process is interrupted.
+**Why:** Prevents corruption if process is interrupted. Using `mktemp` creates a secure, unpredictable filename.
 
 ### 4. Quote Handling
 
@@ -355,8 +355,8 @@ echo "$VALUE"
 # BAD: Can corrupt file if interrupted
 sed -i "s/field: .*/field: $VALUE/" "$FILE"
 
-# GOOD: Atomic
-TEMP_FILE="${FILE}.tmp.$$"
+# GOOD: Atomic with secure temp file
+TEMP_FILE=$(mktemp) || exit 1
 sed "s/field: .*/field: $VALUE/" "$FILE" > "$TEMP_FILE"
 mv "$TEMP_FILE" "$FILE"
 ```

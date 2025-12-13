@@ -198,8 +198,9 @@ Always use temp file + atomic move to prevent corruption:
 FILE=".claude/my-plugin.local.md"
 NEW_VALUE="updated_value"
 
-# Create temp file
-TEMP_FILE="${FILE}.tmp.$$"
+# Create secure temp file (unpredictable name)
+TEMP_FILE=$(mktemp) || { echo "Failed to create temp file" >&2; exit 1; }
+trap 'rm -f "$TEMP_FILE"' EXIT
 
 # Update field using sed
 sed "s/^field_name: .*/field_name: $NEW_VALUE/" "$FILE" > "$TEMP_FILE"
@@ -215,8 +216,8 @@ mv "$TEMP_FILE" "$FILE"
 CURRENT=$(echo "$FRONTMATTER" | grep '^iteration:' | sed 's/iteration: *//')
 NEXT=$((CURRENT + 1))
 
-# Update file
-TEMP_FILE="${FILE}.tmp.$$"
+# Update file (secure temp file)
+TEMP_FILE=$(mktemp) || exit 1
 sed "s/^iteration: .*/iteration: $NEXT/" "$FILE" > "$TEMP_FILE"
 mv "$TEMP_FILE" "$FILE"
 ```
@@ -224,8 +225,8 @@ mv "$TEMP_FILE" "$FILE"
 ### Update Multiple Fields
 
 ```bash
-# Update several fields at once
-TEMP_FILE="${FILE}.tmp.$$"
+# Update several fields at once (secure temp file)
+TEMP_FILE=$(mktemp) || exit 1
 
 sed -e "s/^iteration: .*/iteration: $NEXT_ITERATION/" \
     -e "s/^pr_number: .*/pr_number: $PR_NUMBER/" \
