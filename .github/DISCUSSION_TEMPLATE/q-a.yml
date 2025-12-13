@@ -1,5 +1,3 @@
-name: "❓ Question"
-description: "Ask a question about using the plugin"
 title: "[Question]:"
 labels: ["question"]
 body:
