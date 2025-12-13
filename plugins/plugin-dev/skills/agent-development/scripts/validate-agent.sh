@@ -197,13 +197,13 @@ else
   fi
 
   # Check for second person
-  if ! echo "$SYSTEM_PROMPT" | grep -q "You are\|You will\|Your"; then
+  if ! echo "$SYSTEM_PROMPT" | grep -Eq "You are|You will|Your"; then
     echo "⚠️  System prompt should use second person (You are..., You will...)"
     ((warning_count++))
   fi
 
   # Check for structure
-  if ! echo "$SYSTEM_PROMPT" | grep -qi "responsibilities\|process\|steps"; then
+  if ! echo "$SYSTEM_PROMPT" | grep -Eqi "responsibilities|process|steps"; then
     echo "💡 Consider adding clear responsibilities or process steps"
   fi
 

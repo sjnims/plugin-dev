@@ -53,13 +53,13 @@ check_script() {
   fi
 
   # Check 4: Reads from stdin
-  if ! grep -q "cat\|read" "$script"; then
+  if ! grep -Eq "cat|read" "$script"; then
     echo "⚠️  Doesn't appear to read input from stdin"
     ((warnings++))
   fi
 
   # Check 5: Uses jq for JSON parsing
-  if grep -q "tool_input\|tool_name" "$script" && ! grep -q "jq" "$script"; then
+  if grep -Eq "tool_input|tool_name" "$script" && ! grep -q "jq" "$script"; then
     echo "⚠️  Parses hook input but doesn't use jq"
     ((warnings++))
   fi
@@ -79,19 +79,19 @@ check_script() {
   fi
 
   # Check 8: Uses CLAUDE_PLUGIN_ROOT
-  if ! grep -q "CLAUDE_PLUGIN_ROOT\|CLAUDE_PROJECT_DIR" "$script"; then
+  if ! grep -Eq "CLAUDE_PLUGIN_ROOT|CLAUDE_PROJECT_DIR" "$script"; then
     echo "💡 Tip: Use \$CLAUDE_PLUGIN_ROOT for plugin-relative paths"
   fi
 
   # Check 9: Exit codes
-  if ! grep -q "exit 0\|exit 2" "$script"; then
+  if ! grep -Eq "exit 0|exit 2" "$script"; then
     echo "⚠️  No explicit exit codes (should exit 0 or 2)"
     ((warnings++))
   fi
 
   # Check 10: JSON output for decision hooks
-  if grep -q "PreToolUse\|Stop" "$script"; then
-    if ! grep -q "permissionDecision\|decision" "$script"; then
+  if grep -Eq "PreToolUse|Stop" "$script"; then
+    if ! grep -Eq "permissionDecision|decision" "$script"; then
       echo "💡 Tip: PreToolUse/Stop hooks should output decision JSON"
     fi
   fi
@@ -104,7 +104,7 @@ check_script() {
   fi
 
   # Check 12: Error messages to stderr
-  if grep -q 'echo.*".*error\|Error\|denied\|Denied' "$script"; then
+  if grep -Eq 'echo.*".*error|Error|denied|Denied' "$script"; then
     if ! grep -q '>&2' "$script"; then
       echo "⚠️  Error messages should be written to stderr (>&2)"
       ((warnings++))
@@ -112,7 +112,7 @@ check_script() {
   fi
 
   # Check 13: Input validation
-  if ! grep -q "if.*empty\|if.*null\|if.*-z" "$script"; then
+  if ! grep -Eq "if.*empty|if.*null|if.*-z" "$script"; then
     echo "💡 Tip: Consider validating input fields aren't empty"
   fi
 
