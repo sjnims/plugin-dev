@@ -6,6 +6,7 @@ We release patches for security vulnerabilities for the following versions:
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 0.2.x   | :white_check_mark: |
 | 0.1.x   | :white_check_mark: |
 
 ## Reporting a Vulnerability
@@ -94,7 +95,7 @@ Current branch: [BANG]`git branch --show-current`
 
 - Do NOT "fix" `[BANG]` back to `!` - this is intentional
 - When adding new documentation with bash patterns, use `[BANG]`
-- Audit command: `grep -rn '!`' plugins/plugin-dev/skills/ --include='*.md' | grep -v '\[BANG\]'`
+- Audit command: `rg '!\`' plugins/plugin-dev/skills/ --glob '*.md' | rg -v '\[BANG\]'`
 - See [CONTRIBUTING.md](CONTRIBUTING.md) for documentation guidelines
 - Reference: [command-development skill](plugins/plugin-dev/skills/command-development/SKILL.md) lines 340-378
 

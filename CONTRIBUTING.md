@@ -120,7 +120,7 @@ gh auth status  # Should show logged in with 'repo' and 'project' scopes
 
 1. **Simplicity First**: Don't over-engineer. Keep solutions simple and focused.
 2. **Consistency**: Follow existing patterns in the codebase.
-3. **No External Dependencies**: This is a pure Claude Code plugin (only GitHub CLI dependency).
+3. **Minimal Dependencies**: This plugin only requires GitHub CLI (`gh`) as an external dependency.
 4. **Documentation**: Document all user-facing changes.
 5. **Testing**: Always test locally before submitting.
 
@@ -279,6 +279,19 @@ When creating and/or modifying hooks:
 2. **Timeout**: Set appropriate timeouts (default: 10 seconds)
 3. **Testing**: Test thoroughly to avoid false positives
 
+## Common Mistakes to Avoid
+
+| Mistake | Problem | Solution |
+|---------|---------|----------|
+| Testing in development repo | Pollutes your environment with test files | Create a separate test repository |
+| Using `!` in skill documentation | Shell execution during skill load | Use `[BANG]` placeholder (see [SECURITY.md](SECURITY.md)) |
+| Missing trigger phrases | Skills don't load when expected | Include specific user queries in descriptions |
+| Overly broad tool matchers | Hooks trigger unexpectedly | Use specific patterns like `Write\|Edit` not `*` |
+| Hardcoded paths | Plugin breaks on other machines | Use `${CLAUDE_PLUGIN_ROOT}` |
+| Large SKILL.md files | Slow loading, excessive context | Keep core <2,000 words; use `references/` for details |
+| Missing frontmatter fields | Components fail validation | Always include required fields (`name`, `description`) |
+| Committing test files | Repository bloat | Use `.gitignore` and clean up test repos |
+
 ## Testing
 
 ### Validation Scripts
@@ -321,15 +334,25 @@ For significant changes, test the complete lifecycle:
 Create a test repository to avoid polluting your development environment:
 
 ```bash
-# Create a test repo
-mkdir test-requirements-repo
-cd test-requirements-repo
+# Create a private test repo (recommended for security)
+mkdir test-plugin-repo
+cd test-plugin-repo
 git init
-gh repo create test-requirements-repo --public --source=. --remote=origin
+gh repo create test-plugin-repo --private --source=. --remote=origin
 git push -u origin main
 
 # Now test the plugin
 claude --plugin-dir /path/to/plugin-dev/plugins/plugin-dev
+```
+
+**Cleanup**: After testing, delete the test repository:
+
+```bash
+# Delete local directory
+cd .. && rm -rf test-plugin-repo
+
+# Delete remote repository
+gh repo delete test-plugin-repo --yes
 ```
 
 ## Submitting Changes
@@ -387,6 +410,25 @@ See [pull_request_template.md](.github/pull_request_template.md) for the complet
 - [ ] Tested locally
 - [ ] Component-specific checks completed
 - [ ] No breaking changes (or clearly documented)
+
+### CI Checks on Pull Requests
+
+Your PR will automatically run these checks:
+
+| Workflow | What It Checks |
+|----------|----------------|
+| `markdownlint.yml` | Markdown style and formatting |
+| `links.yml` | Broken links in documentation |
+| `component-validation.yml` | Plugin component structure |
+| `version-check.yml` | Version consistency across manifests |
+| `validate-workflows.yml` | GitHub Actions syntax |
+| `claude-pr-review.yml` | AI-powered code review |
+
+All checks must pass before merging. Fix any failures before requesting review.
+
+### Version Releases
+
+Version releases are handled by maintainers. If your contribution requires a version bump, maintainers will follow the [Version Release Procedure](CLAUDE.md#version-release-procedure) in CLAUDE.md.
 
 ## Style Guide
 

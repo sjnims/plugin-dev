@@ -10,6 +10,33 @@ This repository is a **plugin marketplace** containing the **plugin-dev** plugin
 
 **Current Version**: v0.2.0 (see [CHANGELOG.md](CHANGELOG.md) for release history)
 
+### Quick Links
+
+| Topic | Location |
+|-------|----------|
+| Testing locally | [Testing](#testing) |
+| Version release | [Version Release Procedure](#version-release-procedure) |
+| Linting | [Linting](#linting) |
+| Component patterns | [Component Patterns](#component-patterns) |
+| Workflows | [Workflow](#workflow) |
+| CI/CD | [CI/CD](#cicd) |
+
+## ⚠️ Architecture Note (Important)
+
+**This repo has two levels of `.claude-plugin/`:**
+
+| Level | Path | Purpose |
+|-------|------|---------|
+| Root | `/.claude-plugin/marketplace.json` | Marketplace manifest listing available plugins |
+| Plugin | `/plugins/plugin-dev/.claude-plugin/plugin.json` | Individual plugin manifest |
+
+**When testing locally**, point to the plugin directory, not the root:
+
+```bash
+claude --plugin-dir plugins/plugin-dev  # ✓ Correct
+claude --plugin-dir .                    # ✗ Wrong (loads marketplace, not plugin)
+```
+
 ## Repository Structure
 
 ```
@@ -25,15 +52,6 @@ plugin-dev/                      # Marketplace root
 │       └── skills/              # 8 specialized skills
 └── .github/workflows/           # CI/CD workflows
 ```
-
-## Architecture Note
-
-This repo has two levels of `.claude-plugin/`:
-
-- **Root level**: `/.claude-plugin/marketplace.json` - Marketplace manifest listing available plugins
-- **Plugin level**: `/plugins/plugin-dev/.claude-plugin/plugin.json` - Individual plugin manifest
-
-When testing locally, point to the plugin directory, not the root.
 
 ## Key Conventions
 
@@ -114,6 +132,41 @@ Utility scripts (paths relative to `plugins/plugin-dev/`):
 ./skills/plugin-settings/scripts/validate-settings.sh .claude/plugin.local.md
 ./skills/plugin-settings/scripts/parse-frontmatter.sh .claude/plugin.local.md
 ```
+
+## Troubleshooting
+
+### Common Issues
+
+| Problem | Cause | Solution |
+|---------|-------|----------|
+| Plugin not loading | Wrong directory path | Use `plugins/plugin-dev`, not root |
+| Skill not triggering | Weak trigger phrases | Add specific user queries to description |
+| Hook not firing | Incorrect matcher pattern | Check regex syntax, test with `test-hook.sh` |
+| Validation script fails | Missing dependencies (`jq`) | Install required tools (see [README.md](README.md#prerequisites)) |
+| Shell execution in skills | Using `!` backtick pattern | Replace with `[BANG]` placeholder |
+
+### Debug Mode
+
+Run Claude Code with debug output:
+
+```bash
+claude --debug --plugin-dir plugins/plugin-dev
+```
+
+### Validation Failures
+
+If components fail validation:
+
+1. **Run the specific validator** for the component type (see utility scripts above)
+2. **Check frontmatter** - ensure all required fields are present
+3. **Verify file location** - components must be in correct directories
+4. **Check naming** - use kebab-case for names (e.g., `my-agent`, not `myAgent`)
+
+### Getting More Help
+
+- Check [README.md FAQ](README.md#faq) for common questions
+- Review [CONTRIBUTING.md](CONTRIBUTING.md#common-mistakes-to-avoid) for common mistakes
+- Open an [issue](https://github.com/sjnims/plugin-dev/issues) if you're stuck
 
 ## Linting
 

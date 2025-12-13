@@ -6,7 +6,7 @@
 
 [![CI](https://github.com/sjnims/plugin-dev/actions/workflows/component-validation.yml/badge.svg)](https://github.com/sjnims/plugin-dev/actions/workflows/component-validation.yml)
 [![Markdown](https://github.com/sjnims/plugin-dev/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/sjnims/plugin-dev/actions/workflows/markdownlint.yml)
-[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/sjnims/plugin-dev/releases)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](https://github.com/sjnims/plugin-dev/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 A comprehensive toolkit for developing Claude Code plugins with expert guidance on hooks, MCP integration, plugin structure, and marketplace publishing.
@@ -24,6 +24,7 @@ A comprehensive toolkit for developing Claude Code plugins with expert guidance 
 - [Development Workflow](#development-workflow)
 - [Use Cases](#use-cases)
 - [Best Practices](#best-practices)
+- [FAQ](#faq)
 - [Contributing](#contributing)
 - [Getting Help](#getting-help)
 - [Attribution](#attribution)
@@ -275,6 +276,19 @@ graph TD
     E -.- E1[validation agents + scripts]
 ```
 
+<!-- Text fallback for viewers that don't render mermaid -->
+<details>
+<summary>Workflow diagram (text version)</summary>
+
+```
+Design Structure → Add Components → Integrate Services → Add Automation → Test & Validate
+       ↓                 ↓                  ↓                  ↓                ↓
+plugin-structure   command/agent/     mcp-integration    hook-development   validation
+    skill          skill skills           skill              skill         agents + scripts
+```
+
+</details>
+
 | Phase | Skill/Tool | What You Do |
 |-------|------------|-------------|
 | **Design** | plugin-structure | Define manifest, directory layout |
@@ -317,6 +331,7 @@ graph TD
 - HTTPS/WSS for MCP servers
 - Environment variables for credentials
 - Principle of least privilege
+- Use `[BANG]` placeholder in skill documentation for shell patterns (see [SECURITY.md](SECURITY.md))
 
 ### Portability
 
@@ -329,12 +344,45 @@ graph TD
 - Validate configurations before deployment
 - Test hooks with sample inputs
 - Use debug mode (`claude --debug`)
+- Create separate test repositories to avoid polluting development
 
 ### Documentation
 
 - Clear README files for each plugin
 - Document all environment variables
 - Include usage examples
+
+### What to Avoid
+
+| Anti-Pattern | Why It's Bad | Better Approach |
+|--------------|--------------|-----------------|
+| Hardcoded absolute paths | Breaks portability | Use `${CLAUDE_PLUGIN_ROOT}` |
+| Overly broad hook matchers (`*`) | Unexpected triggers, performance impact | Use specific patterns like `Write\|Edit` |
+| Large SKILL.md files (>2,000 words) | Slow loading, context bloat | Use `references/` for detailed docs |
+| Storing secrets in manifests | Security risk | Use environment variables |
+| Testing in your main dev repo | File pollution, git noise | Use dedicated test repositories |
+
+## FAQ
+
+**Q: How do I test my plugin without affecting my development environment?**
+
+Create a separate test repository and load the plugin from there. See [CONTRIBUTING.md](CONTRIBUTING.md#test-repository) for detailed instructions.
+
+**Q: My skill isn't loading when I ask trigger questions. What's wrong?**
+
+Check that your skill description includes the specific phrases users might say. The description should start with "This skill should be used when..." and include example queries like `"create a hook"`, `"add MCP server"`.
+
+**Q: What's the `[BANG]` placeholder I see in documentation?**
+
+Due to a Claude Code issue, inline bash patterns (`!` followed by backtick) can execute during skill loading. The `[BANG]` placeholder prevents this. See [SECURITY.md](SECURITY.md#shell-pattern-escaping-with-bang-placeholder) for details.
+
+**Q: How do I structure a plugin with both commands and MCP integration?**
+
+Start with `/plugin-dev:create-plugin` for a guided walkthrough, or ask: "What's the best directory structure for a plugin with commands and MCP integration?" The plugin-structure skill will guide you.
+
+**Q: Can I restrict which tools my skill or agent can use?**
+
+Yes, use the `allowed-tools` frontmatter field. For example: `allowed-tools: Read, Grep, Glob` creates a read-only skill.
 
 ## Contributing
 
