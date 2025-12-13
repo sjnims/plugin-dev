@@ -1,5 +1,12 @@
 name: Check Links
 
+# Checks all markdown files for broken links using lychee
+# Key flags:
+#   --cache: Cache results to speed up subsequent runs
+#   --exclude-link-local: Skip localhost/127.0.0.1 links (not reachable in CI)
+#   --exclude-file: Use .lycheeignore for links that shouldn't be checked (e.g., rate-limited sites)
+# Creates a GitHub issue on failure for visibility
+
 on:
   pull_request:
     paths:
@@ -11,6 +18,10 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: write  # Required by peter-evans/create-issue-from-file on failure
 
 jobs:
   linkChecker:

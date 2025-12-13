@@ -20,6 +20,7 @@ jobs:
       github.actor != 'dependabot[bot]' &&
       github.actor != 'claude[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       contents: read
       id-token: write

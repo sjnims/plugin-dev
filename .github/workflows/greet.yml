@@ -14,6 +14,8 @@ concurrency:
 
 jobs:
   greeting:
+    # Skip bot accounts to avoid greeting automated tools
+    if: github.actor != 'dependabot[bot]' && github.actor != 'claude[bot]'
     runs-on: ubuntu-latest
     permissions:
       issues: write

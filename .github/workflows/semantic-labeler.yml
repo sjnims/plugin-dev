@@ -23,6 +23,7 @@ jobs:
       github.actor != 'dependabot[bot]' &&
       github.actor != 'claude[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       contents: read
       issues: write
@@ -117,6 +118,7 @@ jobs:
       github.actor != 'claude[bot]' &&
       github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       contents: read
       pull-requests: write

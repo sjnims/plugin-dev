@@ -29,3 +29,5 @@ jobs:
           stale-pr-label: 'stale'
           exempt-issue-labels: 'pinned,security,roadmap'
           exempt-pr-labels: 'pinned,security'
+          operations-per-run: 100  # Limit API calls per run to avoid rate limiting
+          enable-statistics: true  # Log statistics for monitoring

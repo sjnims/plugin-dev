@@ -16,6 +16,7 @@ concurrency:
 jobs:
   maintenance-report:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
       issues: write
@@ -26,6 +27,25 @@ jobs:
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           fetch-depth: 1
+
+      - name: Close previous maintenance issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Find and close any existing open maintenance report issues
+          # This prevents accumulation of stale maintenance reports
+          existing_issues=$(gh issue list --label "automation" --state open --json number,title \
+            --jq '.[] | select(.title | startswith("Weekly Maintenance Report")) | .number')
+
+          if [ -n "$existing_issues" ]; then
+            echo "Found existing maintenance issues to close:"
+            echo "$existing_issues" | while read -r issue_num; do
+              echo "  Closing issue #$issue_num"
+              gh issue close "$issue_num" --comment "Superseded by new weekly maintenance report."
+            done
+          else
+            echo "No existing maintenance issues found"
+          fi
 
       - name: Generate maintenance report
         uses: anthropics/claude-code-action@f0c8eb29807907de7f5412d04afceb5e24817127 # v1.0.23
