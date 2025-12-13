@@ -41,7 +41,7 @@ jobs:
         run: npm install -g markdownlint-cli
 
       - name: Review PR with Claude
-        uses: anthropics/claude-code-action@97b8aadc01f558e46e7faacdb4461a3dc6c73c56 # v1.0.23
+        uses: anthropics/claude-code-action@f0c8eb29807907de7f5412d04afceb5e24817127 # v1.0.23
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           mode: agent
