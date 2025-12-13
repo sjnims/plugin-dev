@@ -225,6 +225,36 @@ An 8-phase guided workflow for marketplace creation:
 7. Validation - Run marketplace validators
 8. Testing & Finalization - Test installation and finalize
 
+### Workflow Command Security
+
+The workflow commands (`/plugin-dev:create-plugin` and `/plugin-dev:create-marketplace`) require broad file system access to perform their scaffolding functions:
+
+```yaml
+allowed-tools: Read, Write, Edit, Grep, Glob, Bash(mkdir:*), Bash(git init:*), ...
+```
+
+**Why this access is needed:**
+
+- Creating plugin directory structures requires `Write` and `Bash(mkdir:*)`
+- Generating manifest files and component templates requires `Write` and `Edit`
+- Initializing git repositories requires `Bash(git init:*)`
+- Exploring existing code for patterns requires `Read`, `Grep`, `Glob`
+
+**Security considerations:**
+
+- These commands can write to any location within the user's permission scope
+- The commands prompt for confirmation before creating structures
+- Review the target directory before starting a workflow
+- In multi-user environments, verify the working directory is appropriate
+
+**Design contrast with `/plugin-dev:start`:**
+
+The entry point command uses `disable-model-invocation: true` and restricts tools to `AskUserQuestion, SlashCommand, TodoWrite` since it only routes to other commands. The workflow commands need broader access because they perform the actual file creation work.
+
+**For security-sensitive environments:**
+
+Review the `allowed-tools` frontmatter in each command file to understand exactly what access is granted. Future Claude Code versions may support path-scoped tool restrictions (e.g., `Write(./plugins/*)`), which would allow tighter scoping.
+
 ## Validation Agents
 
 Use these agents proactively after creating components:
